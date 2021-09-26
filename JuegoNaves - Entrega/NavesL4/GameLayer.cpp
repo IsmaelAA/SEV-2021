@@ -83,12 +83,17 @@ void GameLayer::update() {
 			enemyProjectiles.push_back(newProjectile);
 		}
 	}
+
 	for (auto const& projectile : projectiles) {
 		projectile->update();
 	}
 
 	for (auto const& enemyProjectile : enemyProjectiles) {
 		enemyProjectile->update();
+	}
+
+	for (auto const& coin : coins) {
+		coin->update();
 	}
 
 	// Generar enemigos
@@ -109,10 +114,19 @@ void GameLayer::update() {
 		newRedEnemyTime = 100;
 	}
 
+	// Generar monedas
+	newCoinTime--;
+	if (newCoinTime <= 0) {
+		int rX = (rand() % (600 - 500)) + 1 + 500;
+		int rY = (rand() % (300 - 60)) + 1 + 60;
+		coins.push_back(new Coin(rX, rY, game));
+		newCoinTime = 250;
+	}
+
 	list<Enemy*> deleteEnemies;
 	list<Projectile*> deleteProjectiles;
 	list<EnemyProjectile*> deleteEnemyProjectiles;
-
+	list<Coin*> deleteCoins;
 	// Colisiones
 	for (auto const& enemy : enemies) {
 		if (player->isOverlap(enemy)) {
@@ -204,6 +218,16 @@ void GameLayer::update() {
 		}
 	}
 
+	// Colisiones , Player - Coin
+
+	for (auto const& coin : coins) {
+		if (player->isOverlap(coin)) {
+			points += 10;
+			textPoints->content = to_string(points);
+			deleteCoins.push_back(coin);
+		}
+	}
+
 	// Limpiar enemigos y proyectiles.
 	for (auto const& delEnemy : deleteEnemies) {
 		enemies.remove(delEnemy);
@@ -223,6 +247,12 @@ void GameLayer::update() {
 	}
 	deleteEnemyProjectiles.clear();
 
+	// Limpiar monedas
+	for (auto const& delCoin : deleteCoins) {
+		coins.remove(delCoin);
+		delete delCoin;
+	}
+	deleteCoins.clear();
 
 	cout << "update GameLayer" << endl;
 }
@@ -241,6 +271,10 @@ void GameLayer::draw() {
 
 	for (auto const& enemy : enemies) {
 		enemy->draw();
+	}
+
+	for (auto const& coin : coins) {
+		coin->draw();
 	}
 
 	textPoints->draw();

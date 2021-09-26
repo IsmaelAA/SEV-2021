@@ -11,6 +11,8 @@
 #include "EnemyProjectile.h"
 #include "Text.h"
 
+#include "Coin.h"
+
 #include "Audio.h" 
 
 #include <list>
@@ -47,5 +49,7 @@ public:
 
 	Audio* audioBackground;
 
+	int newCoinTime = 0;
+	list<Coin*> coins;
 };
 
