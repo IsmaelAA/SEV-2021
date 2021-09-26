@@ -14,6 +14,6 @@ public:
 	Audio* audioShoot;
 	int shootCadence = 30;
 	int shootTime = 0;
-	int lifes = 3;
+	int lives = 3;
 };
 

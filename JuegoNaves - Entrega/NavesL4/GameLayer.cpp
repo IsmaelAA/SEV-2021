@@ -29,7 +29,7 @@ void GameLayer::init() {
 	textPoints->content = to_string(points);
 
 	textHealth = new Text("vidas", WIDTH * 0.10, HEIGHT * 0.07, game);
-	textHealth->content = to_string(player->lifes);
+	textHealth->content = to_string(player->lives);
 }
 
 void GameLayer::processControls() {
@@ -131,14 +131,14 @@ void GameLayer::update() {
 	for (auto const& enemy : enemies) {
 		if (player->isOverlap(enemy)) {
 		
-			player->lifes -= 1;
-			textHealth->content = to_string(player->lifes);
+			player->lives -= 1;
+			textHealth->content = to_string(player->lives);
 
-			if (player->lifes <= 0) {
+			if (player->lives <= 0) {
 				init();
 				return; // Cortar el fors
 			}
-			cout << player->lifes;
+			cout << player->lives;
 
 			deleteEnemies.push_back(enemy);
 
@@ -203,12 +203,12 @@ void GameLayer::update() {
 	for (auto const& enemyProjectile : enemyProjectiles) {
 		if (enemyProjectile->isOverlap(player)) {
 			
-			player->lifes -= 1;
-			textHealth->content = to_string(player->lifes);
+			player->lives -= 1;
+			textHealth->content = to_string(player->lives);
 			
-			cout << player->lifes;
+			cout << player->lives;
 			
-			if (player->lifes <= 0) {
+			if (player->lives <= 0) {
 				init();
 				return; // Cortar el fors
 			}
