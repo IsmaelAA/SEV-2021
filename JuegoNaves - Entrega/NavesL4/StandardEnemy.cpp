@@ -31,7 +31,7 @@ void StandardEnemy::draw() {
 }
 
 EnemyProjectile* StandardEnemy::shoot() {
-	if (shootTime == 0) {
+	if (shootTime == 0 && this->isInRender()) {
 		audioShoot->play();
 		shootTime = shootCadence;
 		return new EnemyProjectile(x, y, game);

@@ -6,6 +6,7 @@ class Actor
 {
 public:
 	Actor(string filename, float x, float y, int width, int height, Game* game);
+	~Actor();
 	virtual void draw();
 	bool isOverlap(Actor* actor);
 	bool isInRender();

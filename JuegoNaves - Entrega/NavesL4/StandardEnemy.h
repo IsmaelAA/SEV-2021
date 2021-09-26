@@ -17,5 +17,6 @@ public:
 	Audio* audioShoot;
 	int shootCadence = 70;
 	int shootTime = 30;
+
 };
 

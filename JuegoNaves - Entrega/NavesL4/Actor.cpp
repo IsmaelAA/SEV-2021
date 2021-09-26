@@ -53,4 +53,6 @@ bool Actor::isInRender() {
 	return false;
 }
 
+Actor::~Actor() {}
+
 

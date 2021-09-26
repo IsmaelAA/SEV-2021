@@ -1,50 +1,13 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: El directorio intermedio (Debug\) contiene archivos compartidos de otro proyecto (NavesL4.vcxproj, NavesV1.vcxproj). Esto puede dar lugar a un comportamiento incorrecto de limpieza y recompilación.
-  Actor.cpp
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\Actor.cpp(6,12): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\Actor.cpp(7,12): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-  Animation.cpp
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\Animation.cpp(9,21): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\Animation.cpp(10,22): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\Animation.cpp(11,20): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\Animation.cpp(12,21): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\Animation.cpp(27,13): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\Animation.cpp(28,13): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\Animation.cpp(44,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\Animation.cpp(52,20): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\Animation.cpp(53,20): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-  Audio.cpp
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\Audio.h(7,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-  Background.cpp
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\Background.cpp(19,9): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-  Enemy.cpp
-  EnemyProjectile.cpp
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\EnemyProjectile.cpp(10,8): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-  Game.cpp
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\Audio.h(7,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\Game.cpp(65,56): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\Game.cpp(65,35): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
   GameLayer.cpp
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\Audio.h(7,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\GameLayer.cpp(25,45): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\GameLayer.cpp(28,66): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\GameLayer.cpp(31,66): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\GameLayer.cpp(28,68): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\GameLayer.cpp(31,67): warning C4305: 'argumento': truncamiento de 'double' a 'float'
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\GameLayer.cpp(99,43): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\GameLayer.cpp(99,39): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\GameLayer.cpp(108,38): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\GameLayer.cpp(108,34): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-  Layer.cpp
-  Main.cpp
-  Player.cpp
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\Audio.h(7,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\Player.cpp(13,8): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\Player.cpp(14,8): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\Player.cpp(29,28): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\Player.cpp(29,25): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-  Projectile.cpp
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\Projectile.cpp(9,8): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-  RedEnemy.cpp
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\RedEnemy.cpp(12,8): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\RedEnemy.cpp(13,8): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
   StandardEnemy.cpp
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\Audio.h(7,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\StandardEnemy.cpp(10,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
@@ -54,8 +17,5 @@ C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\StandardEn
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\StandardEnemy.cpp(30,18): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\StandardEnemy.cpp(37,33): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\StandardEnemy.cpp(37,30): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-  Text.cpp
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\Text.cpp(5,12): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\NavesL4\Text.cpp(6,12): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
   Generando código...
   NavesL4.vcxproj -> C:\Users\isman\Desktop\P1Cuatri\SEV-2021\JuegoNaves - Entrega\Debug\EntregaNaves.exe

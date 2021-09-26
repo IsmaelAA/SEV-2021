@@ -25,11 +25,11 @@ void GameLayer::init() {
 		WIDTH * 0.10, HEIGHT * 0.07, 44, 36, game);
 
 	points = 0;
-	textPoints = new Text("hola", WIDTH * 0.92, HEIGHT * 0.05, game);
+	textPoints = new Text("puntos", WIDTH * 0.92, HEIGHT * 0.05, game);
 	textPoints->content = to_string(points);
 
-	textHealth = new Text("hola", WIDTH * 0.10, HEIGHT * 0.07, game);
-	textHealth->content = to_string(3);
+	textHealth = new Text("vidas", WIDTH * 0.10, HEIGHT * 0.07, game);
+	textHealth->content = to_string(player->lifes);
 }
 
 void GameLayer::processControls() {
@@ -109,18 +109,29 @@ void GameLayer::update() {
 		newRedEnemyTime = 100;
 	}
 
+	list<Enemy*> deleteEnemies;
+	list<Projectile*> deleteProjectiles;
+	list<EnemyProjectile*> deleteEnemyProjectiles;
+
 	// Colisiones
 	for (auto const& enemy : enemies) {
 		if (player->isOverlap(enemy)) {
-			init();
-			return; // Cortar el for
+		
+			player->lifes -= 1;
+			textHealth->content = to_string(player->lifes);
+
+			if (player->lifes <= 0) {
+				init();
+				return; // Cortar el fors
+			}
+			cout << player->lifes;
+
+			deleteEnemies.push_back(enemy);
+
 		}
 	}
 
 	// Colisiones , Enemy - Projectile
-
-	list<Enemy*> deleteEnemies;
-	list<Projectile*> deleteProjectiles;
 
 	for (auto const& projectile : projectiles) {
 		if (projectile->isInRender() == false) {
@@ -160,6 +171,40 @@ void GameLayer::update() {
 		}
 	}
 
+	// Colisiones , Player - Projectile
+
+	for (auto const& enemyProjectile : enemyProjectiles) {
+		if (enemyProjectile->isInRender() == false) {
+
+			bool pInList = std::find(deleteEnemyProjectiles.begin(),
+				deleteEnemyProjectiles.end(),
+				enemyProjectile) != deleteEnemyProjectiles.end();
+
+			if (!pInList) {
+				deleteEnemyProjectiles.push_back(enemyProjectile);
+			}
+		}
+	}
+
+	for (auto const& enemyProjectile : enemyProjectiles) {
+		if (enemyProjectile->isOverlap(player)) {
+			
+			player->lifes -= 1;
+			textHealth->content = to_string(player->lifes);
+			
+			cout << player->lifes;
+			
+			if (player->lifes <= 0) {
+				init();
+				return; // Cortar el fors
+			}
+
+			deleteEnemyProjectiles.push_back(enemyProjectile);
+
+		}
+	}
+
+	// Limpiar enemigos y proyectiles.
 	for (auto const& delEnemy : deleteEnemies) {
 		enemies.remove(delEnemy);
 		delete delEnemy;
@@ -172,15 +217,11 @@ void GameLayer::update() {
 	}
 	deleteProjectiles.clear();
 
-
-	// Colisiones , Player - Projectile
-	for (auto const& enemyProjectile : enemyProjectiles) {
-		if (enemyProjectile->isOverlap(player)) {
-			init();
-			return; // Cortar el for
-		}
-
+	for (auto const& delEProjectile : deleteEnemyProjectiles) {
+		enemyProjectiles.remove(delEProjectile);
+		delete delEProjectile;
 	}
+	deleteEnemyProjectiles.clear();
 
 
 	cout << "update GameLayer" << endl;
@@ -188,6 +229,7 @@ void GameLayer::update() {
 
 void GameLayer::draw() {
 	background->draw();
+	player->draw();
 
 	for (auto const& projectile : projectiles) {
 		projectile->draw();
@@ -196,8 +238,6 @@ void GameLayer::draw() {
 	for (auto const& enemyProjectile : enemyProjectiles) {
 		enemyProjectile->draw();
 	}
-
-	player->draw();
 
 	for (auto const& enemy : enemies) {
 		enemy->draw();
