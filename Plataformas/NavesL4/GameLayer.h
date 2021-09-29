@@ -13,6 +13,7 @@
 
 #include "Audio.h"
 #include "Tile.h"
+#include "Space.h" 
 class GameLayer : public Layer
 {
 public:
@@ -32,6 +33,7 @@ public:
 
 	list<Tile*> tiles;
 
+	Space* space;
 
 	int newEnemyTime = 0;
 

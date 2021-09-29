@@ -9,6 +9,7 @@ public:
 	virtual void draw(float scrollx = 0);
 	bool isOverlap(Actor* actor);
 	bool isInRender(float scrollX = 0);
+	bool collisionDown;
 	SDL_Texture* texture;
 	int x;
 	int y;

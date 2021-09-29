@@ -12,6 +12,7 @@ public:
 	void update();
 	void moveX(float axis);
 	void moveY(float axis);
+	void jump();
 	int shootCadence = 30;
 	int shootTime = 0;
 
@@ -27,7 +28,7 @@ public:
 
 	int orientation;
 	int state;
-
+	bool onAir;
 	Audio* audioShoot;
 };
 

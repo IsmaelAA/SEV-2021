@@ -2,7 +2,7 @@
 
 Player::Player(float x, float y, Game* game)
 	: Actor("res/jugador.png", x, y, 35, 35, game) {
-
+	onAir = false;
 	audioShoot = new Audio("res/efecto_disparo.wav", false);
 
 	aIdleRight = new Animation("res/jugador_idle_derecha.png", width, height,
@@ -26,6 +26,13 @@ Player::Player(float x, float y, Game* game)
 
 void Player::update() {
 	bool endAnimation = animation->update();
+
+	if (collisionDown == true) {
+		onAir = false;
+	}
+	else {
+		onAir = true;
+	}
 
 	// Acabo la animación, no sabemos cual
 	if (endAnimation) {
@@ -78,9 +85,7 @@ void Player::update() {
 	}
 
 	animation->update();
-	 
-	x = x + vx;
-	y = y + vy;
+
 
 }
 
@@ -90,6 +95,14 @@ void Player::moveX(float axis) {
 
 void Player::moveY(float axis) {
 	vy = axis * 3;
+}
+
+void Player::jump() {
+	if (!onAir) {
+		vy = -16;
+		onAir = true;
+	}
+
 }
 
 Projectile* Player::shoot() {
