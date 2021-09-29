@@ -3,6 +3,8 @@
 Player::Player(float x, float y, Game* game)
 	: Actor("res/jugador.png", x, y, 35, 35, game) {
 
+	audioShoot = new Audio("res/efecto_disparo.wav", false);
+
 	aIdleRight = new Animation("res/jugador_idle_derecha.png", width, height,
 		320, 40, 6, 8, true, game);
 	aIdleLeft = new Animation("res/jugador_idle_izquierda.png", width, height,
@@ -92,6 +94,7 @@ void Player::moveY(float axis) {
 
 Projectile* Player::shoot() {
 	if (shootTime == 0) {
+		audioShoot->play();
 		state = game->stateShooting;
 		shootTime = shootCadence;
 		aShootingLeft->currentFrame = 0; //"Rebobinar" animación
@@ -108,7 +111,7 @@ Projectile* Player::shoot() {
 	}
 }
 
-void Player::draw() {
-	animation->draw(x, y);
+void Player::draw(float scrollX ) {
+	animation->draw(x - scrollX, y);
 }
 
