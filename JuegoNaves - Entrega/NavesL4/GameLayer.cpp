@@ -17,6 +17,8 @@ void GameLayer::init() {
 	enemies.clear(); // Vaciar por si reiniciamos el juego
 	projectiles.clear(); // Vaciar por si reiniciamos el juego
 	enemyProjectiles.clear();
+	coins.clear();
+	bombs.clear();
 
 	backgroundPoints = new Actor("res/icono_puntos.png",
 		WIDTH * 0.85, HEIGHT * 0.05, 24, 24, game);
@@ -95,14 +97,17 @@ void GameLayer::update() {
 	for (auto const& coin : coins) {
 		coin->update();
 	}
-
+	
+	for (auto const& bomb : bombs) {
+		bomb->update();
+	}
 	// Generar enemigos
 	newEnemyTime--;
 	if (newEnemyTime <= 0) {
 		int rX = (rand() % (600 - 500)) + 1 + 500;
 		int rY = (rand() % (300 - 60)) + 1 + 60;
 		enemies.push_back(new StandardEnemy(rX, rY, game));
-		newEnemyTime = 200;
+		newEnemyTime = 150;
 	}
 
 	// Generar enemigos rojos
@@ -120,13 +125,25 @@ void GameLayer::update() {
 		int rX = (rand() % (600 - 500)) + 1 + 500;
 		int rY = (rand() % (300 - 60)) + 1 + 60;
 		coins.push_back(new Coin(rX, rY, game));
-		newCoinTime = 250;
+		newCoinTime = 300;
+	}
+
+
+	// Generar monedas
+	newBombTime--;
+	if (newBombTime <= 0) {
+		int rX = (rand() % (600 - 500)) + 1 + 500;
+		int rY = (rand() % (300 - 60)) + 1 + 60;
+		bombs.push_back(new Bomb(rX, rY, game));
+		newBombTime = 500;
 	}
 
 	list<Enemy*> deleteEnemies;
 	list<Projectile*> deleteProjectiles;
 	list<EnemyProjectile*> deleteEnemyProjectiles;
 	list<Coin*> deleteCoins;
+	list<Bomb*> deleteBombs;
+
 	// Colisiones
 	for (auto const& enemy : enemies) {
 		if (player->isOverlap(enemy)) {
@@ -228,6 +245,23 @@ void GameLayer::update() {
 		}
 	}
 
+	// Colisiones , Player - Bomb
+
+	for (auto const& bomb : bombs) {
+		if (player->isOverlap(bomb)) {
+			
+			bomb->explote(); //Efecto de sonido
+
+			for (auto const& enemy : enemies) { //Elimina todos los enemigos
+				points++;
+				deleteEnemies.push_back(enemy);
+			}
+
+			textPoints->content = to_string(points);
+			deleteBombs.push_back(bomb);
+		}
+	}
+
 	// Limpiar enemigos y proyectiles.
 	for (auto const& delEnemy : deleteEnemies) {
 		enemies.remove(delEnemy);
@@ -254,6 +288,13 @@ void GameLayer::update() {
 	}
 	deleteCoins.clear();
 
+	// Limpiar bombas
+	for (auto const& delBomb : deleteBombs) {
+		bombs.remove(delBomb);
+		delete delBomb;
+	}
+	deleteBombs.clear();
+
 	cout << "update GameLayer" << endl;
 }
 
@@ -275,6 +316,10 @@ void GameLayer::draw() {
 
 	for (auto const& coin : coins) {
 		coin->draw();
+	}
+
+	for (auto const& bomb : bombs) {
+		bomb->draw();
 	}
 
 	textPoints->draw();

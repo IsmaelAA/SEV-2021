@@ -12,7 +12,7 @@
 #include "Text.h"
 
 #include "Coin.h"
-
+#include "Bomb.h"
 #include "Audio.h" 
 
 #include <list>
@@ -51,5 +51,8 @@ public:
 
 	int newCoinTime = 0;
 	list<Coin*> coins;
+
+	int newBombTime = 500;
+	list<Bomb*> bombs;
 };
 
