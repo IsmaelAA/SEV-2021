@@ -97,7 +97,7 @@ void GameLayer::update() {
 	for (auto const& coin : coins) {
 		coin->update();
 	}
-	
+
 	for (auto const& bomb : bombs) {
 		bomb->update();
 	}
@@ -117,6 +117,15 @@ void GameLayer::update() {
 		int rY = (rand() % (300 - 60)) + 1 + 60;
 		enemies.push_back(new RedEnemy(rX, rY, game));
 		newRedEnemyTime = 100;
+	}
+
+	// Generar enemigos rojos
+	newBlueEnemyTime--;
+	if (newBlueEnemyTime <= 0) {
+		int rX = (rand() % (600 - 500)) + 1 + 500;
+		int rY = (rand() % (300 - 60)) + 1 + 60;
+		enemies.push_back(new BlueEnemy(rX, rY, game));
+		newBlueEnemyTime = 150;
 	}
 
 	// Generar monedas
@@ -147,7 +156,7 @@ void GameLayer::update() {
 	// Colisiones
 	for (auto const& enemy : enemies) {
 		if (player->isOverlap(enemy)) {
-		
+
 			player->lives -= 1;
 			textHealth->content = to_string(player->lives);
 
@@ -180,6 +189,7 @@ void GameLayer::update() {
 	for (auto const& enemy : enemies) {
 		for (auto const& projectile : projectiles) {
 			if (enemy->isOverlap(projectile)) {
+
 				bool pInList = std::find(deleteProjectiles.begin(),
 					deleteProjectiles.end(),
 					projectile) != deleteProjectiles.end();
@@ -188,15 +198,19 @@ void GameLayer::update() {
 					deleteProjectiles.push_back(projectile);
 				}
 
-				bool eInList = std::find(deleteEnemies.begin(),
-					deleteEnemies.end(),
-					enemy) != deleteEnemies.end();
+				if (enemy->hit() == 0) {
 
-				if (!eInList) {
-					deleteEnemies.push_back(enemy);
+					bool eInList = std::find(deleteEnemies.begin(),
+						deleteEnemies.end(),
+						enemy) != deleteEnemies.end();
+
+					if (!eInList) {
+						deleteEnemies.push_back(enemy);
+					}
+
+					points += enemy->getPoints();
+					textPoints->content = to_string(points);
 				}
-				points++;
-				textPoints->content = to_string(points);
 
 			}
 		}
@@ -219,12 +233,12 @@ void GameLayer::update() {
 
 	for (auto const& enemyProjectile : enemyProjectiles) {
 		if (enemyProjectile->isOverlap(player)) {
-			
+
 			player->lives -= 1;
 			textHealth->content = to_string(player->lives);
-			
+
 			cout << player->lives;
-			
+
 			if (player->lives <= 0) {
 				init();
 				return; // Cortar el fors
@@ -249,11 +263,11 @@ void GameLayer::update() {
 
 	for (auto const& bomb : bombs) {
 		if (player->isOverlap(bomb)) {
-			
+
 			bomb->explote(); //Efecto de sonido
 
 			for (auto const& enemy : enemies) { //Elimina todos los enemigos
-				points++;
+				points += enemy->getPoints();
 				deleteEnemies.push_back(enemy);
 			}
 
@@ -325,7 +339,7 @@ void GameLayer::draw() {
 	textPoints->draw();
 	backgroundPoints->draw();
 
-	
+
 	backgroundHealth->draw();
 	textHealth->draw();
 

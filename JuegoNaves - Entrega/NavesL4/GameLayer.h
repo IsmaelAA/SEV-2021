@@ -7,6 +7,7 @@
 #include "Enemy.h"
 #include "StandardEnemy.h"
 #include "RedEnemy.h"
+#include "BlueEnemy.h"
 #include "Projectile.h"
 #include "EnemyProjectile.h"
 #include "Text.h"
@@ -30,6 +31,7 @@ public:
 	void keysToControls(SDL_Event event);
 	int newEnemyTime = 0;
 	int newRedEnemyTime = 0;
+	int newBlueEnemyTime = 0;
 
 	Player* player;
 	Background* background;

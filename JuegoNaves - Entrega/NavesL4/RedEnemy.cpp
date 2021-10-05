@@ -21,3 +21,12 @@ EnemyProjectile* RedEnemy::shoot() {
 	return NULL;
 }
 
+int RedEnemy::getPoints() 
+{
+	return points;
+}
+
+int RedEnemy::hit() {
+	healthPoints--;
+	return healthPoints;
+}

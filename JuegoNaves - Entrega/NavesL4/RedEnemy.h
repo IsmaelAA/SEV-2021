@@ -10,5 +10,11 @@ public:
 	RedEnemy(float x, float y, Game* game);
 	void update();
 	EnemyProjectile* shoot();
+
+	int points = 1;
+	int getPoints();
+
+	int healthPoints = 1;
+	int hit();
 };
 

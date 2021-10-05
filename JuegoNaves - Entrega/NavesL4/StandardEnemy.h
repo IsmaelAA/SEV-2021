@@ -10,6 +10,13 @@ public:
 	StandardEnemy(float x, float y, Game* game);
 	void draw() override; // Va a sobrescribir
 	void update();
+
+	int points = 1;
+	int getPoints();
+
+	int healthPoints = 1;
+	int hit();
+
 	Animation* aMoving;
 	Animation* animation; // Referencia a la animación mostrada
 

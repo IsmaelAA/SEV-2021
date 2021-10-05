@@ -41,3 +41,13 @@ EnemyProjectile* StandardEnemy::shoot() {
 	}
 }
 
+
+int StandardEnemy::getPoints() {
+	return points;
+}
+
+int StandardEnemy::hit() {
+	healthPoints--;
+	return healthPoints;
+}
+
