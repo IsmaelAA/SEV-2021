@@ -27,6 +27,8 @@ public:
 	SDL_Window* window; // ventana
 	SDL_Renderer* renderer; // renderizador
 	bool loopActive; // Juego activo
+	Layer* layer;
+	Layer* menuLayer;
 	Layer* gameLayer;
 	TTF_Font* font;
 
@@ -41,6 +43,15 @@ public:
 
 	int const orientationRight = 1;
 	int const orientationLeft = 2;
+
+	int currentLevel = 0;
+	int finalLevel = 2;
+
+	int input;
+	int const inputKeyboard = 1;
+	int const inputMouse = 2;
+	int const inputGamePad = 3;
+
 
 
 };

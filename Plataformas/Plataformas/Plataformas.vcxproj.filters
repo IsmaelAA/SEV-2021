@@ -25,6 +25,12 @@
     <Filter Include="Archivos de origen\actores">
       <UniqueIdentifier>{d72f9674-6a1c-47ec-9ac3-e65b9c20e91d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de origen\actores\interface">
+      <UniqueIdentifier>{e6300002-6875-4984-a07e-acae17a34651}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\actores\interface">
+      <UniqueIdentifier>{9b5b65d7-65e5-426f-b5b5-9edba6c9d6a8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -54,9 +60,6 @@
     <ClCompile Include="Projectile.cpp">
       <Filter>Archivos de origen\actores</Filter>
     </ClCompile>
-    <ClCompile Include="Text.cpp">
-      <Filter>Archivos de origen\actores</Filter>
-    </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -68,6 +71,15 @@
     </ClCompile>
     <ClCompile Include="Space.cpp">
       <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Pad.cpp">
+      <Filter>Archivos de origen\actores\interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>Archivos de origen\actores\interface</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuLayer.cpp">
+      <Filter>Archivos de origen\layers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -95,9 +107,6 @@
     <ClInclude Include="Projectile.h">
       <Filter>Archivos de encabezado\actores</Filter>
     </ClInclude>
-    <ClInclude Include="Text.h">
-      <Filter>Archivos de encabezado\actores</Filter>
-    </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
@@ -109,6 +118,15 @@
     </ClInclude>
     <ClInclude Include="Space.h">
       <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>Archivos de encabezado\actores\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Pad.h">
+      <Filter>Archivos de encabezado\actores\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuLayer.h">
+      <Filter>Archivos de encabezado\layers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

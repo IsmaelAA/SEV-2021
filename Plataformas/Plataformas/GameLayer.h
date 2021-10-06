@@ -14,6 +14,7 @@
 #include "Audio.h"
 #include "Tile.h"
 #include "Space.h" 
+#include "Pad.h"
 class GameLayer : public Layer
 {
 public:
@@ -24,6 +25,8 @@ public:
 	void draw() override;
 
 	void keysToControls(SDL_Event event);
+	void mouseToControls(SDL_Event event); // USO DE MOUSE
+	void gamePadToControls(SDL_Event event); // USO DE GAMEPAD
 	void loadMap(string name);
 	void loadMapObject(char character, float x, float y);
 	int mapWidth;
@@ -42,6 +45,7 @@ public:
 	list<Enemy*> enemies;
 	list<Projectile*> projectiles;
 
+	bool controlContinue = false;
 	bool controlShoot = false;
 	int controlMoveY = 0;
 	int controlMoveX = 0;
@@ -53,6 +57,16 @@ public:
 	Audio* audioBackground;
 
 
+	Tile* cup; // Elemento de final de nivel
+	// Elementos de interfaz
+	Actor* buttonJump;
+	Actor* buttonShoot;
+
+	Pad* pad;
+	SDL_GameController* gamePad;
+
+	Actor* message;
+	bool pause;
 
 };
 
