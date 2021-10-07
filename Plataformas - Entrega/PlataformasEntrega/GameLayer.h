@@ -5,7 +5,10 @@
 #include "Background.h"
 
 #include "Enemy.h"
+#include "RedEnemy.h"
+#include "StandardEnemy.h"
 #include "Projectile.h"
+#include "EnemyProjectile.h"
 #include "Text.h"
 #include <fstream> // Leer ficheros
 #include <sstream> // Leer líneas / String

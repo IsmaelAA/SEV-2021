@@ -31,6 +31,12 @@
     <Filter Include="Archivos de encabezado\actores\interface">
       <UniqueIdentifier>{9b5b65d7-65e5-426f-b5b5-9edba6c9d6a8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\actores\enemigos">
+      <UniqueIdentifier>{c917d4a2-b411-4d40-9593-68e41a51fe22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\actores\enemigos">
+      <UniqueIdentifier>{2f85c8a9-e5a6-4e86-bac1-0d6815466c8a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -52,9 +58,6 @@
       <Filter>Archivos de origen\actores</Filter>
     </ClCompile>
     <ClCompile Include="Background.cpp">
-      <Filter>Archivos de origen\actores</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy.cpp">
       <Filter>Archivos de origen\actores</Filter>
     </ClCompile>
     <ClCompile Include="Projectile.cpp">
@@ -81,6 +84,18 @@
     <ClCompile Include="MenuLayer.cpp">
       <Filter>Archivos de origen\layers</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Archivos de origen\actores\enemigos</Filter>
+    </ClCompile>
+    <ClCompile Include="StandardEnemy.cpp">
+      <Filter>Archivos de origen\actores\enemigos</Filter>
+    </ClCompile>
+    <ClCompile Include="RedEnemy.cpp">
+      <Filter>Archivos de origen\actores\enemigos</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyProjectile.cpp">
+      <Filter>Archivos de origen\actores\enemigos</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -99,9 +114,6 @@
       <Filter>Archivos de encabezado\actores</Filter>
     </ClInclude>
     <ClInclude Include="Background.h">
-      <Filter>Archivos de encabezado\actores</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.h">
       <Filter>Archivos de encabezado\actores</Filter>
     </ClInclude>
     <ClInclude Include="Projectile.h">
@@ -127,6 +139,18 @@
     </ClInclude>
     <ClInclude Include="MenuLayer.h">
       <Filter>Archivos de encabezado\layers</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Archivos de encabezado\actores\enemigos</Filter>
+    </ClInclude>
+    <ClInclude Include="RedEnemy.h">
+      <Filter>Archivos de encabezado\actores\enemigos</Filter>
+    </ClInclude>
+    <ClInclude Include="StandardEnemy.h">
+      <Filter>Archivos de encabezado\actores\enemigos</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyProjectile.h">
+      <Filter>Archivos de encabezado\actores\enemigos</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
