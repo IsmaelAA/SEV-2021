@@ -47,6 +47,7 @@ public:
 	Background* background;
 	list<Enemy*> enemies;
 	list<Projectile*> projectiles;
+	list<EnemyProjectile*> eProjectiles;
 
 	bool controlContinue = false;
 	bool controlShoot = false;

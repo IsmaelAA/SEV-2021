@@ -25,6 +25,7 @@ void GameLayer::init() {
 	background = new Background("res/fondo_2.png", WIDTH * 0.5, HEIGHT * 0.5, -1, game);
 	enemies.clear(); // Vaciar por si reiniciamos el juego
 	projectiles.clear(); // Vaciar por si reiniciamos el juego
+	eProjectiles.clear();
 
 	backgroundPoints = new Actor("res/icono_puntos.png",
 		WIDTH * 0.85, HEIGHT * 0.05, 24, 24, game);
@@ -67,6 +68,10 @@ void GameLayer::update() {
 
 	for (auto const& enemy : enemies) {
 		enemy->update();
+		EnemyProjectile* newProjectile = enemy->shoot();
+		if (newProjectile != NULL) {
+			eProjectiles.push_back(newProjectile);
+		}
 	}
 
 	for (auto const& projectile : projectiles) {
@@ -88,7 +93,7 @@ void GameLayer::update() {
 
 	list<Enemy*> deleteEnemies;
 	list<Projectile*> deleteProjectiles;
-	list<EnemyProjectile*> deleteEnemyProjectiles;
+	list<EnemyProjectile*> deleteEProjectiles;
 
 	for (auto const& projectile : projectiles) {
 		if (projectile->isInRender(scrollX) == false || projectile->vx == 0) {
@@ -134,7 +139,7 @@ void GameLayer::update() {
 		}
 	}
 
-	// Limpiar enemigos derrotados
+	// Limpiar 
 	for (auto const& delEnemy : deleteEnemies) {
 		enemies.remove(delEnemy);
 		space->removeDynamicActor(delEnemy);
@@ -149,6 +154,12 @@ void GameLayer::update() {
 	}
 	deleteProjectiles.clear();
 
+	for (auto const& delEProjectile : deleteEProjectiles) {
+		eProjectiles.remove(delEProjectile);
+		space->removeDynamicActor(delEProjectile);
+		delete delEProjectile;
+	}
+	deleteEProjectiles.clear();
 
 	cout << "update GameLayer" << endl;
 }
@@ -180,6 +191,10 @@ void GameLayer::draw() {
 
 	for (auto const& projectile : projectiles) {
 		projectile->draw(scrollX);
+	}
+
+	for (auto const& eProjectile : eProjectiles) {
+		eProjectile->draw(scrollX);
 	}
 	cup->draw(scrollX);
 	player->draw(scrollX);
