@@ -140,7 +140,6 @@ void GameLayer::update() {
 		}
 	}
 
-
 	for (auto const& projectile : projectiles) {
 		if (projectile->isInRender(scrollX) == false || projectile->vx == 0) {
 
