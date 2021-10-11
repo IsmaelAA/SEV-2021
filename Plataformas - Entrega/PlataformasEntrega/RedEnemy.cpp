@@ -7,12 +7,16 @@ RedEnemy::RedEnemy(float x, float y, Game* game)
 	vx = vxIntelligence;
 
 	state = game->stateMoving;
+	orientation = game->orientationLeft;
 
 	aDying = new Animation("res/enemigo_morir_rojo.png", width, height,
 		280, 40, 6, 8, false, game);
 
 	aMoving = new Animation("res/enemigo_movimiento_rojo.png", width, height,
 		108, 40, 6, 3, true, game);
+
+	audioShoot = new Audio("res/efecto_disparo.wav", false);
+
 
 	animation = aMoving;
 
@@ -21,6 +25,14 @@ RedEnemy::RedEnemy(float x, float y, Game* game)
 void RedEnemy::update() {
 	// Actualizar la animación
 	bool endAnimation = animation->update();
+
+	// Establecer orientación
+	if (vx > 0) {
+		orientation = game->orientationRight;
+	}
+	if (vx < 0) {
+		orientation = game->orientationLeft;
+	}
 
 	// Acabo la animación, no sabemos cual
 	if (endAnimation) {
@@ -79,12 +91,20 @@ void RedEnemy::impacted() {
 }
 
 EnemyProjectile* RedEnemy::shoot() {
-	if (shootTime == 0 && this->isInRender()) {
-		audioShoot->play();
+	if (shootTime == 0) {
 		shootTime = shootCadence;
-		return new EnemyProjectile(x, y, game);
+		if (this->isInRender()) {
+			audioShoot->play();
+			EnemyProjectile* projectile = new EnemyProjectile(x, y, game);
+			if (orientation == game->orientationLeft) {
+				projectile->vx = projectile->vx * -1; // Invertir
+			}
+			return projectile;
+			
+		}
 	}
 	else {
+		shootTime--;
 		return NULL;
 	}
 }

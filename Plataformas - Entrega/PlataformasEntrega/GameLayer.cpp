@@ -39,7 +39,7 @@ void GameLayer::init() {
 }
 
 void GameLayer::update() {
-	
+
 	if (pause) {
 		return;
 	}
@@ -70,12 +70,17 @@ void GameLayer::update() {
 		enemy->update();
 		EnemyProjectile* newProjectile = enemy->shoot();
 		if (newProjectile != NULL) {
+			space->addDynamicActor(newProjectile);
 			eProjectiles.push_back(newProjectile);
 		}
 	}
 
 	for (auto const& projectile : projectiles) {
 		projectile->update();
+	}
+
+	for (auto const& eProjectile : eProjectiles) {
+		eProjectile->update();
 	}
 
 	// Colisiones
@@ -89,24 +94,11 @@ void GameLayer::update() {
 		}
 	}
 
-	// Colisiones , Enemy - Projectile
-
 	list<Enemy*> deleteEnemies;
 	list<Projectile*> deleteProjectiles;
 	list<EnemyProjectile*> deleteEProjectiles;
 
-	for (auto const& projectile : projectiles) {
-		if (projectile->isInRender(scrollX) == false || projectile->vx == 0) {
-
-			bool pInList = std::find(deleteProjectiles.begin(),
-				deleteProjectiles.end(),
-				projectile) != deleteProjectiles.end();
-
-			if (!pInList) {
-				deleteProjectiles.push_back(projectile);
-			}
-		}
-	}
+	// Colisiones , Enemy - Projectile
 
 	for (auto const& enemy : enemies) {
 		for (auto const& projectile : projectiles) {
@@ -123,6 +115,54 @@ void GameLayer::update() {
 				points++;
 				textPoints->content = to_string(points);
 
+			}
+		}
+	}
+
+	// Colisiones EnemyProjectile - Player
+
+	for (auto const& projectile : eProjectiles) {
+		if (player->isOverlap(projectile)) {
+			bool pInList = std::find(deleteEProjectiles.begin(),
+				deleteEProjectiles.end(),
+				projectile) != deleteEProjectiles.end();
+
+			if (!pInList) {
+				deleteEProjectiles.push_back(projectile);
+			}
+
+			player->loseLife();
+			if (player->lifes <= 0) {
+				init();
+				return;
+			}
+
+		}
+	}
+
+
+	for (auto const& projectile : projectiles) {
+		if (projectile->isInRender(scrollX) == false || projectile->vx == 0) {
+
+			bool pInList = std::find(deleteProjectiles.begin(),
+				deleteProjectiles.end(),
+				projectile) != deleteProjectiles.end();
+
+			if (!pInList) {
+				deleteProjectiles.push_back(projectile);
+			}
+		}
+	}
+
+	for (auto const& projectile : eProjectiles) {
+		if (projectile->isInRender(scrollX) == false || projectile->vx == 0) {
+
+			bool pInList = std::find(deleteEProjectiles.begin(),
+				deleteEProjectiles.end(),
+				projectile) != deleteEProjectiles.end();
+
+			if (!pInList) {
+				deleteEProjectiles.push_back(projectile);
 			}
 		}
 	}
@@ -365,13 +405,13 @@ void GameLayer::processControls() {
 
 	// Eje Y
 	if (controlMoveY > 0) {
-		
+
 	}
 	else if (controlMoveY < 0) {
 		player->jump();
 	}
 	else {
-		
+
 	}
 }
 

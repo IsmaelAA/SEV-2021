@@ -13,6 +13,8 @@ public:
 	Animation* aDying;
 	float vxIntelligence;
 	
+	int orientation;
+
 	EnemyProjectile* shoot();
 	Audio* audioShoot;
 	int shootCadence = 70;

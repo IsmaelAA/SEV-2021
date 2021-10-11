@@ -1,35 +1,30 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: El directorio intermedio (Debug\) contiene archivos compartidos de otro proyecto (NavesAnime.vcxproj, NavesL4.vcxproj, Plataformas.vcxproj). Esto puede dar lugar a un comportamiento incorrecto de limpieza y recompilación.
-  Game.cpp
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\Audio.h(6,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\Game.cpp(69,56): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\Game.cpp(69,35): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
   GameLayer.cpp
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\Audio.h(6,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(17,95): warning C4305: 'argumento': truncamiento de 'double' a 'float'
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(34,66): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(171,24): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(177,24): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(243,13): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(244,13): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(448,35): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(448,26): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(451,39): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(454,43): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(454,34): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(457,42): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(457,33): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(464,51): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(464,42): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(465,39): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(477,43): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(477,34): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(480,42): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(480,33): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(211,24): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(217,24): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(283,13): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(284,13): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(488,35): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(488,26): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(491,39): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(494,43): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(494,34): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(497,42): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(497,33): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-  Generando código...
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(504,51): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(504,42): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(505,39): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(517,43): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(517,34): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(520,42): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(520,33): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(528,35): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(528,26): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(534,43): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(534,34): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(537,42): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\PlataformasEntrega\GameLayer.cpp(537,33): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
   PlataformasEntrega.vcxproj -> C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas - Entrega\Debug\PlataformasEntrega.exe

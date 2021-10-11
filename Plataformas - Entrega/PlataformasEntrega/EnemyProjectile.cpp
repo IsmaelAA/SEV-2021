@@ -1,8 +1,8 @@
 #include "EnemyProjectile.h"
 EnemyProjectile::EnemyProjectile(float x, float y, Game* game) :
-	Actor("res/disparo_enemigo.png", x, y, 20, 20, game) {
-	vx = -8;
-	vy = -1; // La gravedad inicial es 1
+	Actor("res/disparo_jugador.png", x, y, 18, 6, game) {
+	vx = 6;
+	vy = 0; // La gravedad inicial es 1
 }
 
 void EnemyProjectile::update() {
