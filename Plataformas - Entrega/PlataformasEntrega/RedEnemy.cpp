@@ -23,6 +23,7 @@ RedEnemy::RedEnemy(float x, float y, Game* game)
 }
 
 void RedEnemy::update() {
+	shootTime--;
 	// Actualizar la animación
 	bool endAnimation = animation->update();
 
@@ -86,25 +87,23 @@ void RedEnemy::draw(float scrollX, float scrollY) {
 
 void RedEnemy::impacted() {
 	if (state != game->stateDying) {
+		shootTime = 1000;// que no dispare cuando esta muriendo.
 		state = game->stateDying;
 	}
 }
 
 EnemyProjectile* RedEnemy::shoot() {
-	if (shootTime == 0) {
+	if (shootTime < 0) {
 		shootTime = shootCadence;
-		if (this->isInRender()) {
-			audioShoot->play();
-			EnemyProjectile* projectile = new EnemyProjectile(x, y, game);
-			if (orientation == game->orientationLeft) {
-				projectile->vx = projectile->vx * -1; // Invertir
-			}
-			return projectile;
 
+		audioShoot->play();
+		EnemyProjectile* projectile = new EnemyProjectile(x, y, game);
+		if (orientation == game->orientationLeft) {
+			projectile->vx = projectile->vx * -1; // Invertir
 		}
+		return projectile;
+
+
 	}
-	else {
-		shootTime--;
-		return NULL;
-	}
+	return NULL;
 }

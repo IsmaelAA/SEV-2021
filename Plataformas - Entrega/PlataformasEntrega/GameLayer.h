@@ -18,6 +18,7 @@
 #include "Tile.h"
 #include "Space.h" 
 #include "Pad.h"
+#include "Collectable.h"
 class GameLayer : public Layer
 {
 public:
@@ -50,6 +51,7 @@ public:
 	list<Enemy*> enemies;
 	list<Projectile*> projectiles;
 	list<EnemyProjectile*> eProjectiles;
+	list<Collectable*> collectables;
 
 	bool controlContinue = false;
 	bool controlShoot = false;
@@ -60,8 +62,11 @@ public:
 	Text* textPoints;
 	int points;
 
-	Audio* audioBackground;
+	Actor* backgroundCollectables;
+	Text* textCollectables;
+	int collectablesObtained;
 
+	Audio* audioBackground;
 
 	Tile* cup; // Elemento de final de nivel
 	// Elementos de interfaz

@@ -75,6 +75,7 @@ void StandardEnemy::draw(float scrollX, float scrollY ) {
 void StandardEnemy::impacted() {
 	if (state != game->stateDying) {
 		state = game->stateDying;
+	
 	}
 }
 EnemyProjectile* StandardEnemy::shoot() {
