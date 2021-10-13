@@ -60,7 +60,7 @@ void Player::update() {
 			state = game->stateMoving;
 		}
 	}
-	
+
 	// Establecer orientación
 	if (vx > 0) {
 		orientation = game->orientationRight;
@@ -162,13 +162,13 @@ Projectile* Player::shoot() {
 	}
 }
 
-void Player::draw(float scrollX ) {
+void Player::draw(float scrollX, float scrollY) {
 	if (invulnerableTime == 0) {
-		animation->draw(x - scrollX, y);
+		animation->draw(x - scrollX, y - scrollY);
 	}
 	else {
 		if (invulnerableTime % 10 >= 0 && invulnerableTime % 10 <= 5) {
-			animation->draw(x - scrollX, y);
+			animation->draw(x - scrollX, y - scrollY);
 		}
 	}
 }

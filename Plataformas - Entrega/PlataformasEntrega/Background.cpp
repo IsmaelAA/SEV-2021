@@ -32,7 +32,7 @@ void Background::update() {
 	}
 }
 
-void Background::draw(float scrollX ) {
+void Background::draw(float scrollX, float scrollY) {
 	Actor::draw(); // llamar al metodo del hijo
 
 	if (backgroundAux != NULL) {
@@ -46,6 +46,18 @@ void Background::draw(float scrollX ) {
 			// pintar aux por la derecha
 			backgroundAux->x = x + width;
 		}
+
+		// zona sin cubrir por arriba
+		if (y - height / 2 > 0) {
+			// pintar aux por la arriba
+			backgroundAux->y = y - height;
+		}
+		// zona sin cubrir por la abajo
+		if (y + height / 2 < HEIGHT) {
+			// pintar aux por la abajo
+			backgroundAux->y = y + height;
+		}
+
 		backgroundAux->draw();
 	}
 

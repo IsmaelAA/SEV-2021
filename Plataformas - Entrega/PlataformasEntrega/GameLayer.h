@@ -33,9 +33,11 @@ public:
 	void loadMap(string name);
 	void loadMapObject(char character, float x, float y);
 	int mapWidth;
+	int mapHeight;
 
 	void calculateScroll();
 	float scrollX;
+	float scrollY;
 
 	list<Tile*> tiles;
 

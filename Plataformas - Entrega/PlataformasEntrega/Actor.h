@@ -6,14 +6,14 @@ class Actor
 {
 public:
 	Actor(string filename, float x, float y, int width, int height, Game* game);
-	virtual void draw(float scrollx = 0);
+	virtual void draw(float scrollx = 0, float scrolly = 0);
 	bool isOverlap(Actor* actor);
-	bool isInRender(float scrollX = 0);
+	bool isInRender(float scrollX = 0, float scrollY = 0);
 	bool containsPoint(int pointX, int pointY); // contiene punto
 	bool collisionDown = false;
 	bool outRight;
 	bool outLeft;
-	
+
 	SDL_Texture* texture;
 	int x;
 	int y;

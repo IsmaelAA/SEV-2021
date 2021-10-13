@@ -80,8 +80,8 @@ void RedEnemy::update() {
 
 }
 
-void RedEnemy::draw(float scrollX) {
-	animation->draw(x - scrollX, y);
+void RedEnemy::draw(float scrollX, float scrollY) {
+	animation->draw(x - scrollX, y - scrollY);
 }
 
 void RedEnemy::impacted() {
@@ -100,7 +100,7 @@ EnemyProjectile* RedEnemy::shoot() {
 				projectile->vx = projectile->vx * -1; // Invertir
 			}
 			return projectile;
-			
+
 		}
 	}
 	else {
