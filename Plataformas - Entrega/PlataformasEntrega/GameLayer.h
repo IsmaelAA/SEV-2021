@@ -13,12 +13,15 @@
 #include <fstream> // Leer ficheros
 #include <sstream> // Leer líneas / String
 #include <list>
+#include <iostream>
 
 #include "Audio.h"
 #include "Tile.h"
+#include "FakeTile.h"
 #include "Space.h" 
 #include "Pad.h"
 #include "Collectable.h"
+
 class GameLayer : public Layer
 {
 public:
@@ -41,6 +44,8 @@ public:
 	float scrollY;
 
 	list<Tile*> tiles;
+	list<FakeTile*> fakeTiles;
+	list<Tile*> destructibleTiles;
 
 	Space* space;
 
