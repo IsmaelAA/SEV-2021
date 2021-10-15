@@ -68,13 +68,14 @@ void StandardEnemy::update() {
 
 }
 
-void StandardEnemy::draw(float scrollX) {
-	animation->draw(x - scrollX, y);
+void StandardEnemy::draw(float scrollX, float scrollY ) {
+	animation->draw(x - scrollX, y - scrollY);
 }
 
 void StandardEnemy::impacted() {
 	if (state != game->stateDying) {
 		state = game->stateDying;
+	
 	}
 }
 

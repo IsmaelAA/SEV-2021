@@ -3,9 +3,6 @@
 BlueEnemy::BlueEnemy(float x, float y, Game* game)
 	: Enemy("res/enemigo_azul.png", x, y, 36, 40, game) {
 
-	vxIntelligence = -1;
-	vx = vxIntelligence;
-
 	state = game->stateMoving;
 
 	aDying = new Animation("res/enemigo_morir_azul.png", width, height,
@@ -16,12 +13,39 @@ BlueEnemy::BlueEnemy(float x, float y, Game* game)
 
 	animation = aMoving;
 
+	vx = 0;
 	vy = 0;
-
 }
 
 void BlueEnemy::update() {
-	vy = vy - 1; // La gravedad suma 1 en cada actualización restamos para anularla 
+	tiempoCiclo--;
+	// Divido en 4 partes un ciclo
+
+	if (tiempoCiclo < ciclo * 0.25) {
+		// Diagonal superior derecha
+		vy = -2;
+		vx = -1;
+	}
+	else if (tiempoCiclo < ciclo * 0.5) {
+		// Diagonal superior izquierda
+		vy = -2;
+		vx = 1;
+	}
+	else if (tiempoCiclo < ciclo * 0.75) {
+		// Diagonal inferior izquierda
+		vy = 0;
+		vx = 1;
+	}
+	else if (tiempoCiclo < ciclo) {
+		// Diagonal inferior derecha
+		vy = 0;
+		vx = -1;
+	}
+
+	// Si tiempo ciclo menor que 0 se resetea
+	if (tiempoCiclo < 0)
+		tiempoCiclo = ciclo;
+
 	// Actualizar la animación
 	bool endAnimation = animation->update();
 
@@ -40,40 +64,10 @@ void BlueEnemy::update() {
 		animation = aDying;
 	}
 
-	// Establecer velocidad
-	if (state != game->stateDying) {
-		// no está muerto y se ha quedado parado
-		if (vx == 0) {
-			vxIntelligence = vxIntelligence * -1;
-			vx = vxIntelligence;
-		}
-
-		if (outRight) {
-			// mover hacia la izquierda vx tiene que ser negativa
-			if (vxIntelligence > 0) {
-				vxIntelligence = vxIntelligence * -1;
-			}
-			vx = vxIntelligence;
-		}
-		if (outLeft) {
-			// mover hacia la derecha vx tiene que ser positiva
-			if (vxIntelligence < 0) {
-				vxIntelligence = vxIntelligence * -1;
-			}
-			vx = vxIntelligence;
-		}
-
-	}
-	else {
-		vx = 0;
-		
-	}
-
-
 }
 
-void BlueEnemy::draw(float scrollX) {
-	animation->draw(x - scrollX, y);
+void BlueEnemy::draw(float scrollX, float scrollY) {
+	animation->draw(x - scrollX, y - scrollY);
 }
 
 void BlueEnemy::impacted() {

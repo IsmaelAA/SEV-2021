@@ -7,7 +7,6 @@
 #include "Enemy.h"
 #include "RedEnemy.h"
 #include "BlueEnemy.h"
-#include "GreenEnemy.h"
 #include "StandardEnemy.h"
 #include "Projectile.h"
 #include "EnemyProjectile.h"
@@ -15,11 +14,15 @@
 #include <fstream> // Leer ficheros
 #include <sstream> // Leer líneas / String
 #include <list>
+#include <iostream>
 
 #include "Audio.h"
 #include "Tile.h"
+#include "FakeTile.h"
 #include "Space.h" 
 #include "Pad.h"
+#include "Collectable.h"
+
 class GameLayer : public Layer
 {
 public:
@@ -35,11 +38,15 @@ public:
 	void loadMap(string name);
 	void loadMapObject(char character, float x, float y);
 	int mapWidth;
+	int mapHeight;
 
 	void calculateScroll();
 	float scrollX;
+	float scrollY;
 
 	list<Tile*> tiles;
+	list<FakeTile*> fakeTiles;
+	list<Tile*> destructibleTiles;
 
 	Space* space;
 
@@ -50,6 +57,7 @@ public:
 	list<Enemy*> enemies;
 	list<Projectile*> projectiles;
 	list<EnemyProjectile*> eProjectiles;
+	list<Collectable*> collectables;
 
 	bool controlContinue = false;
 	bool controlShoot = false;
@@ -60,8 +68,11 @@ public:
 	Text* textPoints;
 	int points;
 
-	Audio* audioBackground;
+	Actor* backgroundCollectables;
+	Text* textCollectables;
+	int collectablesObtained;
 
+	Audio* audioBackground;
 
 	Tile* cup; // Elemento de final de nivel
 	// Elementos de interfaz
