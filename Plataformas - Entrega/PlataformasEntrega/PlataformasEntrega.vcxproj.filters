@@ -96,6 +96,12 @@
     <ClCompile Include="EnemyProjectile.cpp">
       <Filter>Archivos de origen\actores\enemigos</Filter>
     </ClCompile>
+    <ClCompile Include="GreenEnemy.cpp">
+      <Filter>Archivos de origen\actores\enemigos</Filter>
+    </ClCompile>
+    <ClCompile Include="BlueEnemy.cpp">
+      <Filter>Archivos de origen\actores\enemigos</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -150,6 +156,12 @@
       <Filter>Archivos de encabezado\actores\enemigos</Filter>
     </ClInclude>
     <ClInclude Include="EnemyProjectile.h">
+      <Filter>Archivos de encabezado\actores\enemigos</Filter>
+    </ClInclude>
+    <ClInclude Include="GreenEnemy.h">
+      <Filter>Archivos de encabezado\actores\enemigos</Filter>
+    </ClInclude>
+    <ClInclude Include="BlueEnemy.h">
       <Filter>Archivos de encabezado\actores\enemigos</Filter>
     </ClInclude>
   </ItemGroup>

@@ -164,10 +164,12 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Audio.cpp" />
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="BlueEnemy.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyProjectile.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameLayer.cpp" />
+    <ClCompile Include="GreenEnemy.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MenuLayer.cpp" />
@@ -185,10 +187,12 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Audio.h" />
     <ClInclude Include="Background.h" />
+    <ClInclude Include="BlueEnemy.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyProjectile.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameLayer.h" />
+    <ClInclude Include="GreenEnemy.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="MenuLayer.h" />
     <ClInclude Include="Pad.h" />

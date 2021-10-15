@@ -6,6 +6,8 @@
 
 #include "Enemy.h"
 #include "RedEnemy.h"
+#include "BlueEnemy.h"
+#include "GreenEnemy.h"
 #include "StandardEnemy.h"
 #include "Projectile.h"
 #include "EnemyProjectile.h"

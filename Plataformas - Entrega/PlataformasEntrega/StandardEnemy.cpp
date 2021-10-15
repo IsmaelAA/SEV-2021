@@ -77,7 +77,9 @@ void StandardEnemy::impacted() {
 		state = game->stateDying;
 	}
 }
-EnemyProjectile* StandardEnemy::shoot() {
+
+EnemyProjectile* StandardEnemy::shoot()
+{
 	return NULL;
 }
 
