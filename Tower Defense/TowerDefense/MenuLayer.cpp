@@ -3,7 +3,7 @@
 MenuLayer::MenuLayer(Game* game)
 	: Layer(game) {
 	init();
-	gamePad = SDL_GameControllerOpen(0);
+	
 }
 
 void MenuLayer::init() {
@@ -23,15 +23,7 @@ void MenuLayer::processControls() {
 	// obtener controles
 	SDL_Event event;
 	while (SDL_PollEvent(&event)) {
-		if (event.type == SDL_CONTROLLERDEVICEADDED) {
-			gamePad = SDL_GameControllerOpen(0);
-			if (gamePad == NULL) {
-				cout << "error en GamePad" << endl;
-			}
-			else {
-				cout << "GamePad conectado" << endl;
-			}
-		}
+		
 		// Cambio automático de input
 		// PONER el GamePad
 		if (event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_CONTROLLERAXISMOTION) {
@@ -43,13 +35,7 @@ void MenuLayer::processControls() {
 		if (event.type == SDL_MOUSEBUTTONDOWN) {
 			game->input = game->inputMouse;
 		}
-		// Procesar teclas
-		if (game->input == game->inputGamePad) {  // gamePAD
-			gamePadToControls(event);
-		}
-		if (game->input == game->inputKeyboard) {
-			keysToControls(event);
-		}
+		
 		if (game->input == game->inputMouse) {
 			mouseToControls(event);
 		}
@@ -63,24 +49,6 @@ void MenuLayer::processControls() {
 	}
 }
 
-void MenuLayer::keysToControls(SDL_Event event) {
-	if (event.type == SDL_KEYDOWN) {
-		int code = event.key.keysym.sym;
-		// Pulsada
-		switch (code) {
-		case SDLK_ESCAPE: // derecha
-			game->loopActive = false;
-			break;
-		case SDLK_1:
-			game->scale();
-			break;
-		case SDLK_SPACE: // dispara
-			controlContinue = true;
-			break;
-		}
-	}
-}
-
 void MenuLayer::mouseToControls(SDL_Event event) {
 	// Modificación de coordenadas por posible escalado
 	float motionX = event.motion.x / game->scaleLower;
@@ -91,14 +59,5 @@ void MenuLayer::mouseToControls(SDL_Event event) {
 		if (button->containsPoint(motionX, motionY)) {
 			controlContinue = true;
 		}
-	}
-}
-
-void MenuLayer::gamePadToControls(SDL_Event event) {
-	// Leer los botones
-	bool buttonA = SDL_GameControllerGetButton(gamePad, SDL_CONTROLLER_BUTTON_A);
-
-	if (buttonA) {
-		controlContinue = true;
 	}
 }

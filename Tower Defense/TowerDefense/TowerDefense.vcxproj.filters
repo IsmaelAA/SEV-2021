@@ -99,14 +99,23 @@
     <ClCompile Include="Collectable.cpp">
       <Filter>Archivos de origen\actores</Filter>
     </ClCompile>
-    <ClCompile Include="Tile.cpp">
-      <Filter>Archivos de origen\actores\tiles</Filter>
-    </ClCompile>
-    <ClCompile Include="FakeTile.cpp">
-      <Filter>Archivos de origen\actores\tiles</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Archivos de origen\actores</Filter>
+    </ClCompile>
+    <ClCompile Include="BlueEnemy.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="InitialTile.cpp">
+      <Filter>Archivos de origen\actores\tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="BuildableTile.cpp">
+      <Filter>Archivos de origen\actores\tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="EndTile.cpp">
+      <Filter>Archivos de origen\actores\tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="PathTile.cpp">
+      <Filter>Archivos de origen\actores\tiles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -164,10 +173,19 @@
     <ClInclude Include="Collectable.h">
       <Filter>Archivos de encabezado\actores</Filter>
     </ClInclude>
-    <ClInclude Include="FakeTile.h">
+    <ClInclude Include="BlueEnemy.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="InitialTile.h">
       <Filter>Archivos de encabezado\actores\tiles</Filter>
     </ClInclude>
-    <ClInclude Include="Tile.h">
+    <ClInclude Include="BuildableTile.h">
+      <Filter>Archivos de encabezado\actores\tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="EndTile.h">
+      <Filter>Archivos de encabezado\actores\tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="PathTile.h">
       <Filter>Archivos de encabezado\actores\tiles</Filter>
     </ClInclude>
   </ItemGroup>

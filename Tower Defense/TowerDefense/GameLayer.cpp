@@ -6,50 +6,54 @@ GameLayer::GameLayer(Game* game)
 	message = new Actor("res/mensaje_como_jugar.png", WIDTH * 0.5, HEIGHT * 0.5,
 		WIDTH, HEIGHT, game);
 
-	gamePad = SDL_GameControllerOpen(0);
+	
 	//llama al constructor del padre : Layer(renderer)
 	init();
 }
 
 void GameLayer::init() {
-	pad = new Pad(WIDTH * 0.15, HEIGHT * 0.80, game);
+	space = new Space(0);
+
 	buttonJump = new Actor("res/boton_salto.png", WIDTH * 0.9, HEIGHT * 0.55, 100, 100, game);
 	buttonShoot = new Actor("res/boton_disparo.png", WIDTH * 0.75, HEIGHT * 0.83, 100, 100, game);
 
-	space = new Space(1);
-	scrollX = 0;
-	scrollY = 64;
-	tiles.clear();
-	destructibleTiles.clear();
-	fakeTiles.clear();
-	audioBackground = new Audio("res/musica_ambiente.mp3", true);
+	//buttonBasicTower
+	//buttonCannonTower
+	//buttonFreezeTower
+	//buttonBlastTower
+
+	pathTiles.clear();
+	buildableTiles.clear();
+
+	audioBackground = new Audio("res/Sore_Point.mp3", true);
 	audioBackground->play();
 
-	background = new Background("res/fondo_2.png", WIDTH * 0.5, HEIGHT * 0.5, -1, game);
+	background = new Background("res/fondo_3.png", WIDTH * 0.5, HEIGHT * 0.5, -1, game);
 	enemies.clear(); // Vaciar por si reiniciamos el juego
 	projectiles.clear(); // Vaciar por si reiniciamos el juego
 	eProjectiles.clear();
-	collectables.clear();
+	
 
 	//Interfaz puntos
-	backgroundPoints = new Actor("res/icono_puntos.png",
-		WIDTH * 0.85, HEIGHT * 0.05, 24, 24, game);
+	backgroundPoints = new Actor("res/puntos.png",
+		WIDTH * 0.85, HEIGHT * 0.05, 44, 36, game);
 
 	points = 0;
 
-	textPoints = new Text("hola", WIDTH * 0.92, HEIGHT * 0.05, game);
+	textPoints = new Text("puntos", WIDTH * 0.92, HEIGHT * 0.05, game);
 	textPoints->content = to_string(points);
 
-	//Interfaz collectables
-	backgroundCollectables = new Actor("res/icono_recolectable2.png",
-		WIDTH * 0.70, HEIGHT * 0.06, 24, 24, game);
+	//Interfaz Vidas
+	backgroundLives = new Actor("res/corazon.png",
+		WIDTH * 0.70, HEIGHT * 0.06, 44, 36, game);
 
-	collectablesObtained = 0;
+	lives = 10;
 
-	textCollectables = new Text("hola", WIDTH * 0.77, HEIGHT * 0.05, game);
-	textCollectables->content = to_string(collectablesObtained);
+	textLives = new Text("vidas", WIDTH * 0.77, HEIGHT * 0.05, game);
+	textLives->content = to_string(lives);
 
-	loadMap("res/" + to_string(game->currentLevel) + ".txt");
+	//Cargar mapa
+	loadMap("res/map" + to_string(game->currentLevel) + ".txt");
 
 }
 
@@ -59,32 +63,15 @@ void GameLayer::update() {
 		return;
 	}
 
-	// Nivel superado
-	if (cup->isOverlap(player)) {
-		game->currentLevel++;
-		if (game->currentLevel > game->finalLevel) {
-			game->currentLevel = 0;
-		}
-		message = new Actor("res/mensaje_ganar.png", WIDTH * 0.5, HEIGHT * 0.5,
-			WIDTH, HEIGHT, game);
-		pause = true;
-		init();
-	}
-
-	// Jugador se cae
-	if (player->y > HEIGHT + 80) {
-		player->loseLife();
-		init();
-	}
-
+	
 	space->update();
-	player->update();
+	
 	background->update();
 
 	for (auto const& enemy : enemies) {
 		enemy->update();
 
-		if (enemy->isInRender(scrollX, scrollY)) {
+		if (enemy->isInRender()) {
 			EnemyProjectile* newProjectile = enemy->shoot();
 			if (newProjectile != NULL) {
 				space->addDynamicActor(newProjectile);
@@ -98,98 +85,17 @@ void GameLayer::update() {
 		projectile->update();
 	}
 
-	for (auto const& collectable : collectables) {
-		collectable->update();
-	}
 
 	for (auto const& eProjectile : eProjectiles) {
 		eProjectile->update();
 	}
 
-	// Colisiones
-	for (auto const& enemy : enemies) {
-		if (player->isOverlap(enemy)) {
-			player->loseLife();
-			if (player->lifes <= 0) {
-				init();
-				return;
-			}
-		}
-	}
 
 	list<Enemy*> deleteEnemies;
 	list<Projectile*> deleteProjectiles;
 	list<EnemyProjectile*> deleteEProjectiles;
-	list<Collectable*> deleteCollectables;
-	list<Tile*> deleteTiles;
-	list<FakeTile*> deleteFakeTiles;
 
-	// Colisiones FakeTile - Player
-	for (auto const& tile : fakeTiles) {
-		tile->update();
-
-		if (player->isOverlap(tile)) {
-			tile->isOn = true;
-		}
-
-		if (tile->isTime()) {
-			//Eliminar tile
-			bool tInList = std::find(deleteFakeTiles.begin(),
-				deleteFakeTiles.end(),
-				tile) != deleteFakeTiles.end();
-
-			if (!tInList) {
-				deleteFakeTiles.push_back(tile);
-			}
-		}
-	}
-	// Colisiones Projectil - DestructibleTile
-
-	for (auto const& tile : destructibleTiles) {
-		for (auto const& projectile : projectiles) {
-			if (projectile->isOverlap(tile)) {
-
-				//Eliminar projectil
-				bool pInList = std::find(deleteProjectiles.begin(),
-					deleteProjectiles.end(),
-					projectile) != deleteProjectiles.end();
-
-				if (!pInList) {
-					deleteProjectiles.push_back(projectile);
-				}
-
-				//Eliminar tile
-				bool tInList = std::find(deleteTiles.begin(),
-					deleteTiles.end(),
-					tile) != deleteTiles.end();
-
-				if (!tInList) {
-					deleteTiles.push_back(tile);
-				}
-
-			}
-		}
-	}
-
-	// Colisiones Player Collectable
-
-	for (auto const& collectable : collectables) {
-		if (player->isOverlap(collectable)) {
-
-			bool pInList = std::find(deleteCollectables.begin(),
-				deleteCollectables.end(),
-				collectable) != deleteCollectables.end();
-
-			if (!pInList) {
-				deleteCollectables.push_back(collectable);
-			}
-
-			collectablesObtained++;
-			textCollectables->content = to_string(collectablesObtained);
-		}
-	}
 	// Colisiones , Enemy - Projectile
-
 	for (auto const& enemy : enemies) {
 		for (auto const& projectile : projectiles) {
 			if (enemy->isOverlap(projectile)) {
@@ -209,29 +115,9 @@ void GameLayer::update() {
 		}
 	}
 
-	// Colisiones EnemyProjectile - Player
-
-	for (auto const& projectile : eProjectiles) {
-		if (player->isOverlap(projectile)) {
-			bool pInList = std::find(deleteEProjectiles.begin(),
-				deleteEProjectiles.end(),
-				projectile) != deleteEProjectiles.end();
-
-			if (!pInList) {
-				deleteEProjectiles.push_back(projectile);
-			}
-
-			player->loseLife();
-			if (player->lifes <= 0) {
-				init();
-				return;
-			}
-
-		}
-	}
 
 	for (auto const& projectile : projectiles) {
-		if (projectile->isInRender(scrollX) == false || projectile->vx == 0) {
+		if (projectile->isInRender() == false || projectile->vx == 0) {
 
 			bool pInList = std::find(deleteProjectiles.begin(),
 				deleteProjectiles.end(),
@@ -244,7 +130,7 @@ void GameLayer::update() {
 	}
 
 	for (auto const& projectile : eProjectiles) {
-		if (projectile->isInRender(scrollX) == false || projectile->vx == 0) {
+		if (projectile->isInRender() == false || projectile->vx == 0) {
 
 			bool pInList = std::find(deleteEProjectiles.begin(),
 				deleteEProjectiles.end(),
@@ -290,111 +176,35 @@ void GameLayer::update() {
 	}
 	deleteEProjectiles.clear();
 
-
-	for (auto const& delCollectable : deleteCollectables) {
-		collectables.remove(delCollectable);
-		delete delCollectable;
-	}
-	deleteCollectables.clear();
-
-	for (auto const& delTile : deleteTiles) {
-		destructibleTiles.remove(delTile);
-		space->removeStaticActor(delTile);
-		delete delTile;
-	}
-	deleteTiles.clear();
-
-	for (auto const& delTile : deleteFakeTiles) {
-		fakeTiles.remove(delTile);
-		space->removeStaticActor(delTile);
-		delete delTile;
-	}
-	deleteFakeTiles.clear();
-
 	cout << "update GameLayer" << endl;
 }
 
-void GameLayer::calculateScroll() {
-	// limite izquierda
-	if (player->x > WIDTH * 0.3) {
-		if (player->x - scrollX < WIDTH * 0.3) {
-			scrollX = player->x - WIDTH * 0.3;
-		}
-	}
-	// limite derecha
-	if (player->x < mapWidth - WIDTH * 0.3) {
-		if (player->x - scrollX > WIDTH * 0.7) {
-			scrollX = player->x - WIDTH * 0.7;
-		}
-	}
-
-	//scrollY = player->y - HEIGHT * 0.7;
-
-	// limite arriba
-	if (player->y > HEIGHT * 0.3) {
-		if (player->y - scrollY < HEIGHT * 0.3) {
-			scrollY = player->y - HEIGHT * 0.3;
-		}
-
-	}
-	// limite abajo
-	if (player->y < mapHeight - HEIGHT * 0.3) {
-		if (player->y - scrollY > HEIGHT * 0.7) {
-			scrollY = player->y - HEIGHT * 0.7;
-		}
-	}
-
-}
-
 void GameLayer::draw() {
-
-	calculateScroll();
-
 	background->draw();
 
-	for (auto const& tile : tiles) {
-		tile->draw(scrollX, scrollY);
-	}
-
-	for (auto const& tile : fakeTiles) {
-		tile->draw(scrollX, scrollY);
-	}
-
-	for (auto const& tile : destructibleTiles) {
-		tile->draw(scrollX, scrollY);
-	}
-
-	for (auto const& collectable : collectables) {
-		collectable->draw(scrollX, scrollY);
-	}
-
-	for (auto const& projectile : projectiles) {
-		projectile->draw(scrollX, scrollY);
-	}
-
-	for (auto const& eProjectile : eProjectiles) {
-		eProjectile->draw(scrollX, scrollY);
-	}
-	cup->draw(scrollX, scrollY);
-	player->draw(scrollX, scrollY);
-
-	for (auto const& enemy : enemies) {
-		enemy->draw(scrollX, scrollY);
-	}
-
+	//Dibujar marcadores de puntos y vidas
 	textPoints->draw();
 	backgroundPoints->draw();
 
-	textCollectables->draw();
-	backgroundCollectables->draw();
+	textLives->draw();
+	backgroundLives->draw();
+
+	//Dibujar casillas
+	initialTile->draw();
+	endTile->draw();
+
+	for (auto const& pathTile : pathTiles) {
+		pathTile->draw();
+	}
+
+	for (auto const& buildableTile : buildableTiles) {
+		buildableTile->draw();
+	}
+
 	// HUD
 	if (game->input == game->inputMouse) {
 
-		// HUD
-		buttonJump->draw(); // NO TIENEN SCROLL, POSICION FIJA
-		buttonShoot->draw(); // NO TIENEN SCROLL, POSICION FIJA
-
-		pad->draw(); // NO TIENEN SCROLL, POSICION FIJA
+		
 	}
 
 	if (pause) {
@@ -418,13 +228,13 @@ void GameLayer::loadMap(string name) {
 		for (int i = 0; getline(streamFile, line); i++) {
 			istringstream streamLine(line);
 			mapWidth = line.length() * 40; // Ancho del mapa en pixels
-			mapHeight += 32; //Alto del mapa en pixels
+			mapHeight += 40; //Alto del mapa en pixels
 			// Por carácter (en cada línea)
 			for (int j = 0; !streamLine.eof(); j++) {
 				streamLine >> character; // Leer character 
 				cout << character;
 				float x = 40 / 2 + j * 40; // x central
-				float y = 32 + i * 32; // y suelo
+				float y = 40 + i * 40; // y suelo
 				loadMapObject(character, x, y);
 			}
 
@@ -437,75 +247,31 @@ void GameLayer::loadMap(string name) {
 void GameLayer::loadMapObject(char character, float x, float y)
 {
 	switch (character) {
-	case 'C': {
-		cup = new Tile("res/copa.png", x, y, game);
+	case '0': {
+		initialTile = new InitialTile("res/initial_tile.png", x, y, game);
 		// modificación para empezar a contar desde el suelo.
-		cup->y = cup->y - cup->height / 2;
-		space->addDynamicActor(cup); // Realmente no hace falta
+		initialTile->y = initialTile->y - initialTile->height / 2;
 		break;
 	}
-	case 'E': {
-		StandardEnemy* enemy = new StandardEnemy(x, y, game);
+	case '9': {
+		endTile = new EndTile("res/end_tile.png",x, y, game);
 		// modificación para empezar a contar desde el suelo.
-		enemy->y = enemy->y - enemy->height / 2;
-		enemies.push_back(enemy);
-		space->addDynamicActor(enemy);
-		break;
-	}
-	case 'R': {
-		RedEnemy* enemy = new RedEnemy(x, y, game);
-		// modificación para empezar a contar desde el suelo.
-		enemy->y = enemy->y - enemy->height / 2;
-		enemies.push_back(enemy);
-		space->addDynamicActor(enemy);
-		break;
-	}
-
-	case 'B': {
-		BlueEnemy* enemy = new BlueEnemy(x, y, game);
-		// modificación para empezar a contar desde el suelo.
-		enemy->y = enemy->y - enemy->height / 2;
-		enemies.push_back(enemy);
-		space->addDynamicActor(enemy);
-		break;
-	}
-
-	case '1': {
-		player = new Player(x, y, game);
-		// modificación para empezar a contar desde el suelo.
-		player->y = player->y - player->height / 2;
-		space->addDynamicActor(player);
+		endTile->y = endTile->y - endTile->height / 2;
 		break;
 	}
 	case '#': {
-		Tile* tile = new Tile("res/bloque_tierra.png", x, y, game);
+		PathTile* pathTile = new PathTile("res/path_tile.png",x, y, game);
 		// modificación para empezar a contar desde el suelo.
-		tile->y = tile->y - tile->height / 2;
-		tiles.push_back(tile);
-		space->addStaticActor(tile);
+		pathTile->y = pathTile->y - pathTile->height / 2;
+		pathTiles.push_back(pathTile);
 		break;
 	}
-	case 'W': {
-		FakeTile* tile = new FakeTile(x, y, game);
+
+	case '@': {
+		BuildableTile* buildableTile = new BuildableTile("res/buildable_tile.png",x, y, game);
 		// modificación para empezar a contar desde el suelo.
-		tile->y = tile->y - tile->height / 2;
-		fakeTiles.push_back(tile);
-		space->addStaticActor(tile);
-		break;
-	}
-	case 'U': {
-		Tile* tile = new Tile("res/bloque_metal.png", x, y, game);
-		// modificación para empezar a contar desde el suelo.
-		tile->y = tile->y - tile->height / 2;
-		destructibleTiles.push_back(tile);
-		space->addStaticActor(tile);
-		break;
-	}
-	case '$': {
-		Collectable* collectable = new Collectable(x, y, game);
-		// modificación para empezar a contar desde el suelo.
-		collectable->y = collectable->y - collectable->height / 2;
-		collectables.push_back(collectable);
+		buildableTile->y = buildableTile->y - buildableTile->height / 2;
+		buildableTiles.push_back(buildableTile);
 		break;
 	}
 	}
@@ -515,37 +281,20 @@ void GameLayer::processControls() {
 	// obtener controles
 	SDL_Event event;
 	while (SDL_PollEvent(&event)) {
-		if (event.type == SDL_CONTROLLERDEVICEADDED) {
-			gamePad = SDL_GameControllerOpen(0);
-			if (gamePad == NULL) {
-				cout << "error en GamePad" << endl;
-			}
-			else {
-				cout << "GamePad conectado" << endl;
-			}
-		}
-
 		// Cambio automático de input
-		 // PONER el GamePad
-		if (event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_CONTROLLERAXISMOTION) {
-			game->input = game->inputGamePad;
-		}
 
 		if (event.type == SDL_KEYDOWN) {
 			game->input = game->inputKeyboard;
 		}
+
 		if (event.type == SDL_MOUSEBUTTONDOWN) {
 			game->input = game->inputMouse;
-		}
-
-		// Procesar Mando
-		if (game->input == game->inputGamePad) {  // gamePAD
-			gamePadToControls(event);
 		}
 
 		if (game->input == game->inputKeyboard) {
 			keysToControls(event);
 		}
+
 		if (game->input == game->inputMouse) {
 			mouseToControls(event);
 		}
@@ -555,38 +304,6 @@ void GameLayer::processControls() {
 	if (controlContinue) {
 		pause = false;
 		controlContinue = false;
-	}
-
-	// Disparar
-	if (controlShoot) {
-		Projectile* newProjectile = player->shoot();
-		if (newProjectile != NULL) {
-			space->addDynamicActor(newProjectile);
-			projectiles.push_back(newProjectile);
-		}
-
-	}
-
-	// Eje X
-	if (controlMoveX > 0) {
-		player->moveX(1);
-	}
-	else if (controlMoveX < 0) {
-		player->moveX(-1);
-	}
-	else {
-		player->moveX(0);
-	}
-
-	// Eje Y
-	if (controlMoveY > 0) {
-
-	}
-	else if (controlMoveY < 0) {
-		player->jump();
-	}
-	else {
-
 	}
 }
 
@@ -601,56 +318,8 @@ void GameLayer::keysToControls(SDL_Event event) {
 		case SDLK_1:
 			game->scale();
 			break;
-		case SDLK_d: // derecha
-			controlMoveX = 1;
-			break;
-		case SDLK_a: // izquierda
-			controlMoveX = -1;
-			break;
-		case SDLK_w: // arriba
-			controlMoveY = -1;
-			break;
-		case SDLK_s: // abajo
-			controlMoveY = 1;
-			break;
-		case SDLK_SPACE: // dispara
-			controlShoot = true;
-			break;
 		}
-
-
 	}
-	if (event.type == SDL_KEYUP) {
-		int code = event.key.keysym.sym;
-		// Levantada
-		switch (code) {
-		case SDLK_d: // derecha
-			if (controlMoveX == 1) {
-				controlMoveX = 0;
-			}
-			break;
-		case SDLK_a: // izquierda
-			if (controlMoveX == -1) {
-				controlMoveX = 0;
-			}
-			break;
-		case SDLK_w: // arriba
-			if (controlMoveY == -1) {
-				controlMoveY = 0;
-			}
-			break;
-		case SDLK_s: // abajo
-			if (controlMoveY == 1) {
-				controlMoveY = 0;
-			}
-			break;
-		case SDLK_SPACE: // dispara
-			controlShoot = false;
-			break;
-		}
-
-	}
-
 }
 
 void GameLayer::mouseToControls(SDL_Event event) {
@@ -660,98 +329,40 @@ void GameLayer::mouseToControls(SDL_Event event) {
 	// Cada vez que hacen click
 	if (event.type == SDL_MOUSEBUTTONDOWN) {
 		controlContinue = true;
-		if (pad->containsPoint(motionX, motionY)) {
-			pad->clicked = true;
-			// CLICK TAMBIEN TE MUEVE
-			controlMoveX = pad->getOrientationX(motionX);
-		}
-
+	
 		if (buttonShoot->containsPoint(motionX, motionY)) {
 			controlShoot = true;
 		}
 		if (buttonJump->containsPoint(motionX, motionY)) {
-			controlMoveY = -1;
+			
 		}
 
 	}
 	// Cada vez que se mueve
 	if (event.type == SDL_MOUSEMOTION) {
-		if (pad->clicked && pad->containsPoint(motionX, motionY)) {
-			controlMoveX = pad->getOrientationX(motionX);
-			// Rango de -20 a 20 es igual que 0
-			if (controlMoveX > -20 && controlMoveX < 20) {
-				controlMoveX = 0;
-			}
-
-		}
-		else {
-			pad->clicked = false; // han sacado el ratón del pad
-			controlMoveX = 0;
-		}
-
+		
 		if (buttonShoot->containsPoint(motionX, motionY) == false) {
 			controlShoot = false;
 		}
 		if (buttonJump->containsPoint(motionX, motionY) == false) {
-			controlMoveY = 0;
+			
 		}
 
 	}
 
 	// Cada vez que levantan el click
 	if (event.type == SDL_MOUSEBUTTONUP) {
-		if (pad->containsPoint(motionX, motionY)) {
-			pad->clicked = false;
-			// LEVANTAR EL CLICK TAMBIEN TE PARA
-			controlMoveX = 0;
-		}
 
 		if (buttonShoot->containsPoint(motionX, motionY)) {
 			controlShoot = false;
 		}
 		if (buttonJump->containsPoint(motionX, motionY)) {
-			controlMoveY = 0;
+			
 		}
 
 	}
-}
 
-void GameLayer::gamePadToControls(SDL_Event event) {
-
-	// Leer los botones
-	bool buttonA = SDL_GameControllerGetButton(gamePad, SDL_CONTROLLER_BUTTON_A);
-	bool buttonB = SDL_GameControllerGetButton(gamePad, SDL_CONTROLLER_BUTTON_B);
-	// SDL_CONTROLLER_BUTTON_A, SDL_CONTROLLER_BUTTON_B
-	// SDL_CONTROLLER_BUTTON_X, SDL_CONTROLLER_BUTTON_Y
-	cout << "botones:" << buttonA << "," << buttonB << endl;
-	int stickX = SDL_GameControllerGetAxis(gamePad, SDL_CONTROLLER_AXIS_LEFTX);
-	cout << "stickX" << stickX << endl;
-
-	// Retorna aproximadamente entre [-32800, 32800], el centro debería estar en 0
-	// Si el mando tiene "holgura" el centro varia [-4000 , 4000]
-	if (stickX > 4000) {
-		controlMoveX = 1;
-	}
-	else if (stickX < -4000) {
-		controlMoveX = -1;
-	}
-	else {
-		controlMoveX = 0;
-	}
-
-	if (buttonA) {
-		controlShoot = true;
-	}
-	else {
-		controlShoot = false;
-	}
-
-	if (buttonB) {
-		controlMoveY = -1; // Saltar
-	}
-	else {
-		controlMoveY = 0;
-	}
+	
 }
 
 

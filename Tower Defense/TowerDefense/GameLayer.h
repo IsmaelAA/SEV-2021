@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Layer.h"
-#include "Player.h"
 #include "Background.h"
 
 #include "Enemy.h"
@@ -17,11 +16,14 @@
 #include <iostream>
 
 #include "Audio.h"
-#include "Tile.h"
-#include "FakeTile.h"
+#include "InitialTile.h"
+#include "BuildableTile.h"
+#include "EndTile.h"
+#include "PathTile.h"
+
 #include "Space.h" 
 #include "Pad.h"
-#include "Collectable.h"
+
 
 class GameLayer : public Layer
 {
@@ -29,44 +31,40 @@ public:
 	GameLayer(Game* game);
 	void init() override;
 	void processControls() override;
+	void keysToControls(SDL_Event event);
 	void update() override;
 	void draw() override;
 
-	void keysToControls(SDL_Event event);
 	void mouseToControls(SDL_Event event); // USO DE MOUSE
-	void gamePadToControls(SDL_Event event); // USO DE GAMEPAD
+	
 	void loadMap(string name);
 	void loadMapObject(char character, float x, float y);
 	int mapWidth;
 	int mapHeight;
 
-	void calculateScroll();
-	float scrollX;
-	float scrollY;
-
-	list<Tile*> tiles;
-	list<FakeTile*> fakeTiles;
-	list<Tile*> destructibleTiles;
+	InitialTile* initialTile;
+	EndTile* endTile;
+	list<PathTile*> pathTiles;
+	list<BuildableTile*> buildableTiles;
 
 	Space* space;
-
 	int newEnemyTime = 0;
 
-	Player* player;
 	Background* background;
 	list<Enemy*> enemies;
 	list<Projectile*> projectiles;
 	list<EnemyProjectile*> eProjectiles;
-	list<Collectable*> collectables;
 
 	bool controlContinue = false;
 	bool controlShoot = false;
-	int controlMoveY = 0;
-	int controlMoveX = 0;
 
 	Actor* backgroundPoints;
 	Text* textPoints;
 	int points;
+
+	Actor* backgroundLives;
+	Text* textLives;
+	int lives;
 
 	Actor* backgroundCollectables;
 	Text* textCollectables;
@@ -74,13 +72,12 @@ public:
 
 	Audio* audioBackground;
 
-	Tile* cup; // Elemento de final de nivel
+
 	// Elementos de interfaz
 	Actor* buttonJump;
 	Actor* buttonShoot;
 
 	Pad* pad;
-	SDL_GameController* gamePad;
 
 	Actor* message;
 	bool pause;
