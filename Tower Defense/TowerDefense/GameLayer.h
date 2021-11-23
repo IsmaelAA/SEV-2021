@@ -3,12 +3,17 @@
 #include "Layer.h"
 #include "Background.h"
 
+//Enemies
 #include "Enemy.h"
-#include "RedEnemy.h"
 #include "BlueEnemy.h"
 #include "StandardEnemy.h"
+
+//Towers
+#include "Tower.h"
+#include "BasicTower.h"
+
 #include "Projectile.h"
-#include "EnemyProjectile.h"
+
 #include "Text.h"
 #include <fstream> // Leer ficheros
 #include <sstream> // Leer líneas / String
@@ -16,13 +21,14 @@
 #include <iostream>
 
 #include "Audio.h"
+
+//Tiles
 #include "InitialTile.h"
 #include "BuildableTile.h"
 #include "EndTile.h"
 #include "PathTile.h"
 
 #include "Space.h" 
-#include "Pad.h"
 
 
 class GameLayer : public Layer
@@ -30,30 +36,34 @@ class GameLayer : public Layer
 public:
 	GameLayer(Game* game);
 	void init() override;
+	void loadHUD();
 	void processControls() override;
 	void keysToControls(SDL_Event event);
 	void update() override;
 	void draw() override;
+	Space* space;
 
 	void mouseToControls(SDL_Event event); // USO DE MOUSE
+
+	
 	
 	void loadMap(string name);
 	void loadMapObject(char character, float x, float y);
 	int mapWidth;
 	int mapHeight;
 
+	//Tiles
 	InitialTile* initialTile;
 	EndTile* endTile;
 	list<PathTile*> pathTiles;
 	list<BuildableTile*> buildableTiles;
 
-	Space* space;
-	int newEnemyTime = 0;
-
 	Background* background;
+
+	//Actors
 	list<Enemy*> enemies;
 	list<Projectile*> projectiles;
-	list<EnemyProjectile*> eProjectiles;
+	list<Tower*> towers;
 
 	bool controlContinue = false;
 	bool controlShoot = false;
@@ -66,18 +76,18 @@ public:
 	Text* textLives;
 	int lives;
 
-	Actor* backgroundCollectables;
-	Text* textCollectables;
-	int collectablesObtained;
-
 	Audio* audioBackground;
 
+	int newEnemyTime = 0;
 
 	// Elementos de interfaz
-	Actor* buttonJump;
-	Actor* buttonShoot;
+	Actor* buttonBasicTower;
+	Actor* buttonCannonTower;
+	Actor* buttonFreezeTower;
+	Actor* buttonBlastTower;
 
-	Pad* pad;
+	BuildableTile* selectedTile;
+	void releasteTile();
 
 	Actor* message;
 	bool pause;

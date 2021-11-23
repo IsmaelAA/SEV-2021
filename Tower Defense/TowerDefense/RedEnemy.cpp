@@ -15,7 +15,6 @@ RedEnemy::RedEnemy(float x, float y, Game* game)
 	aMoving = new Animation("res/enemigo_movimiento_rojo.png", width, height,
 		108, 40, 6, 3, true, game);
 
-	audioShoot = new Audio("res/efecto_disparo.wav", false);
 
 
 	animation = aMoving;
@@ -23,7 +22,7 @@ RedEnemy::RedEnemy(float x, float y, Game* game)
 }
 
 void RedEnemy::update() {
-	shootTime--;
+
 	// Actualizar la animación
 	bool endAnimation = animation->update();
 
@@ -87,23 +86,7 @@ void RedEnemy::draw(float scrollX, float scrollY) {
 
 void RedEnemy::impacted() {
 	if (state != game->stateDying) {
-		shootTime = 1000;// que no dispare cuando esta muriendo.
 		state = game->stateDying;
 	}
 }
 
-EnemyProjectile* RedEnemy::shoot() {
-	if (shootTime < 0) {
-		shootTime = shootCadence;
-
-		audioShoot->play();
-		EnemyProjectile* projectile = new EnemyProjectile(x, y, game);
-		if (orientation == game->orientationLeft) {
-			projectile->vx = projectile->vx * -1; // Invertir
-		}
-		return projectile;
-
-
-	}
-	return NULL;
-}

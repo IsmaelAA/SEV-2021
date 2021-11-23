@@ -75,8 +75,3 @@ void BlueEnemy::impacted() {
 		state = game->stateDying;
 	}
 }
-
-EnemyProjectile* BlueEnemy::shoot()
-{
-	return NULL;
-}

@@ -11,7 +11,5 @@ public:
 	void impacted(); // Recibe impacto y pone animación de morir
 	Animation* aDying;
 	float vxIntelligence;
-
-	EnemyProjectile* shoot();
 };
 

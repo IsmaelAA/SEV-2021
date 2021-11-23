@@ -79,8 +79,3 @@ void StandardEnemy::impacted() {
 	}
 }
 
-EnemyProjectile* StandardEnemy::shoot()
-{
-	return NULL;
-}
-

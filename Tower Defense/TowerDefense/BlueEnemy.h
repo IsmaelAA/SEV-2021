@@ -14,8 +14,6 @@ public:
 	void impacted(); // Recibe impacto y pone animación de morir
 	Animation* aDying;
 
-	EnemyProjectile* shoot();
-
 	int tiempoCiclo = 80;
 	int ciclo = 80;
 };

@@ -1,21 +1,32 @@
-﻿  GameLayer.cpp
+﻿  BuildableTile.cpp
+  Game.cpp
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\Audio.h(6,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(18,95): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(43,68): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(48,45): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(52,66): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(236,13): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(237,13): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(333,43): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(333,34): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(336,42): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(336,33): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(344,43): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(344,34): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(347,42): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(347,33): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(356,43): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(356,34): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(359,42): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(359,33): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\Game.cpp(69,56): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\Game.cpp(69,35): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+  GameLayer.cpp
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\Audio.h(6,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(42,104): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(59,45): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(63,66): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(215,13): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(216,13): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(314,46): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(314,37): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(324,48): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(324,39): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(326,66): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(326,49): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(334,49): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(334,40): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(336,66): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(336,49): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(343,49): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(343,40): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(345,66): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(345,49): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(352,48): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(352,39): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(354,66): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(354,49): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  Generando código...
   TowerDefense.vcxproj -> C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\Debug\TowerDefense.exe
