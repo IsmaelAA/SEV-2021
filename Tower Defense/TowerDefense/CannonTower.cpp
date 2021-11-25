@@ -8,6 +8,11 @@ void CannonTower::update()
 {
 }
 
+TowerProjectile* CannonTower::shoot()
+{
+	return nullptr;
+}
+
 int CannonTower::getRange()
 {
 	return range;

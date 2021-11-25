@@ -12,7 +12,24 @@ Actor::Actor(string filename, float x, float y, int width, int height, Game* gam
 	// lo que va a medir en el juego
 	this->width = width;
 	this->height = height;
+
 }
+
+Actor::Actor(string filename, float x, float y, int width, int height, int fileWidth, int fileHeight, Game* game) {
+	clicked = false;
+	this->game = game;
+	texture = game->getTexture(filename);
+	this->x = x;
+	this->y = y;
+	// lo que mide el fichero
+	this->fileWidth = fileWidth;
+	this->fileHeight = fileHeight;
+	// lo que va a medir en el juego
+	this->width = width;
+	this->height = height;
+
+}
+
 
 void Actor::draw(float scrollx, float scrolly) {
 	// Recorte en el fichero de la imagen

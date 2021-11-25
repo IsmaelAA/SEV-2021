@@ -13,20 +13,23 @@ GameLayer::GameLayer(Game* game)
 void GameLayer::init() {
 	space = new Space(0);
 
-	audioBackground = new Audio("res/Sore_Point.mp3", true);
+	audioBackground = new Audio("res/musica_ambiente.mp3", true);
 	audioBackground->play();
 
 	background = new Background("res/fondo_3.png", WIDTH * 0.5, HEIGHT * 0.5, -1, game);
-	
+
+	// Vaciar por si reiniciamos el juego
 	pathTiles.clear();
 	buildableTiles.clear();
-	
-	enemies.clear(); // Vaciar por si reiniciamos el juego
-	projectiles.clear(); // Vaciar por si reiniciamos el juego
+	enemies.clear(); 
+	towerProjectiles.clear();
 	towers.clear();
 
 	selectedTile = NULL;
 	selectedTower = NULL;
+
+	lives = 20;
+	points = 200;
 
 	//Cargar HUD
 	loadHUD();
@@ -81,20 +84,42 @@ void GameLayer::update() {
 	
 	background->update();
 
+	//Generacion de enemigos
+	if (timeToNewEnemy <= 0) {
+		timeToNewEnemy = newEnemyTime;
+		StandardEnemy* se = new  StandardEnemy(initialTile->x, initialTile->y, game);
+		enemies.push_back(se);
+		space->addDynamicActor(se);
+	}
+	else {
+		timeToNewEnemy--;
+	}
+
 	for (auto const& enemy : enemies) {
 		enemy->update();
 	}
 
-	for (auto const& projectile : projectiles) {
-		projectile->update();
+	for (auto const& tower : towers) {
+		tower->update();
+		TowerProjectile* newProjectile = tower->shoot();
+		if (newProjectile != NULL) {
+			space->addDynamicActor(newProjectile);
+			towerProjectiles.push_back(newProjectile);
+		}
 	}
 
+	for (auto const& tProjectile : towerProjectiles) {
+		tProjectile->update();
+	}
+
+
+	// COLISIONES 
 	list<Enemy*> deleteEnemies;
-	list<Projectile*> deleteProjectiles;
+	list<TowerProjectile*> deleteProjectiles;
 
 	// Colisiones , Enemy - Projectile
 	for (auto const& enemy : enemies) {
-		for (auto const& projectile : projectiles) {
+		for (auto const& projectile : towerProjectiles) {
 			if (enemy->isOverlap(projectile)) {
 				bool pInList = std::find(deleteProjectiles.begin(),
 					deleteProjectiles.end(),
@@ -104,7 +129,14 @@ void GameLayer::update() {
 					deleteProjectiles.push_back(projectile);
 				}
 
-				enemy->impacted();
+				bool eInList = std::find(deleteEnemies.begin(),
+					deleteEnemies.end(),
+					enemy) != deleteEnemies.end();
+				
+				if (!eInList) {
+					deleteEnemies.push_back(enemy);
+				}
+				
 				points++;
 				textPoints->content = to_string(points);
 
@@ -112,7 +144,29 @@ void GameLayer::update() {
 		}
 	}
 
-	for (auto const& projectile : projectiles) {
+	// Colision enemy - endTile
+	for (auto const& enemy : enemies) {
+		if (enemy->isOverlap(endTile)) {
+			
+			lives--;
+			textLives->content = to_string(lives);
+			
+			bool eInList = std::find(deleteEnemies.begin(),
+				deleteEnemies.end(),
+				enemy) != deleteEnemies.end();
+
+			if (!eInList) {
+				deleteEnemies.push_back(enemy);
+			}
+
+			if (lives <= 0) {
+				init();
+				return;
+			}
+	}
+	}
+	// Si el projectil se sale de pantalla borrar.
+	for (auto const& projectile : towerProjectiles) {
 		if (projectile->isInRender() == false || projectile->vx == 0) {
 
 			bool pInList = std::find(deleteProjectiles.begin(),
@@ -121,18 +175,6 @@ void GameLayer::update() {
 
 			if (!pInList) {
 				deleteProjectiles.push_back(projectile);
-			}
-		}
-	}
-
-	for (auto const& enemy : enemies) {
-		if (enemy->state == game->stateDead) {
-			bool eInList = std::find(deleteEnemies.begin(),
-				deleteEnemies.end(),
-				enemy) != deleteEnemies.end();
-
-			if (!eInList) {
-				deleteEnemies.push_back(enemy);
 			}
 		}
 	}
@@ -146,7 +188,7 @@ void GameLayer::update() {
 	deleteEnemies.clear();
 
 	for (auto const& delProjectile : deleteProjectiles) {
-		projectiles.remove(delProjectile);
+		towerProjectiles.remove(delProjectile);
 		space->removeDynamicActor(delProjectile);
 		delete delProjectile;
 	}
@@ -175,6 +217,16 @@ void GameLayer::draw() {
 		tower->draw();
 	}
 
+	//Dibujar enemigos
+	for (auto const& enemy : enemies) {
+		enemy->draw();
+	}
+
+	//Dibujar projectiles
+	for (auto const& tProjectile : towerProjectiles) {
+		tProjectile->draw();
+	}
+
 	// HUD
 	//Dibujar marcadores de puntos y vidas
 	textPoints->draw();
@@ -197,8 +249,8 @@ void GameLayer::draw() {
 		textPrecioBlast->draw();
 
 		if (selectedTower != NULL) {
-			Actor* rangeCircle = new Actor("res/range_circle2.png",selectedTower->x,selectedTower->y,
-				selectedTower->getRange()*40, selectedTower->getRange()*40,game);
+			Actor* rangeCircle = new Actor("res/range_circle.png",selectedTower->x,selectedTower->y,
+				selectedTower->getRange()*20* 3.14159, selectedTower->getRange()*20* 3.14159,200,200,game);
 			rangeCircle->draw();
 		}
 	}
@@ -268,6 +320,7 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		// modificación para empezar a contar desde el suelo.
 		buildableTile->y = buildableTile->y - buildableTile->height / 2;
 		buildableTiles.push_back(buildableTile);
+		//space->addStaticActor(buildableTile);
 		break;
 	}
 	}

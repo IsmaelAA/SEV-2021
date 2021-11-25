@@ -49,6 +49,12 @@
     <Filter Include="Archivos de encabezado\actores\towers">
       <UniqueIdentifier>{70314bde-6f67-4aa2-831a-c7fa481cab91}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\actores\towers\projectiles">
+      <UniqueIdentifier>{97841ccb-e013-464e-9c89-12c8042bd3b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\actores\towers\projectiles">
+      <UniqueIdentifier>{934864f9-057b-45b9-ab73-e8191b8e9ac7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -126,6 +132,12 @@
     <ClCompile Include="CannonTower.cpp">
       <Filter>Archivos de origen\actores\towers</Filter>
     </ClCompile>
+    <ClCompile Include="TowerProjectile.cpp">
+      <Filter>Archivos de origen\actores\towers\projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicProjectile.cpp">
+      <Filter>Archivos de origen\actores\towers\projectiles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -199,6 +211,12 @@
     </ClInclude>
     <ClInclude Include="FreezeTower.h">
       <Filter>Archivos de encabezado\actores\towers</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicProjectile.h">
+      <Filter>Archivos de encabezado\actores\towers\projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="TowerProjectile.h">
+      <Filter>Archivos de encabezado\actores\towers\projectiles</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

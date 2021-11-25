@@ -3,8 +3,8 @@
 StandardEnemy::StandardEnemy(float x, float y, Game* game)
 	: Enemy("res/enemigo.png", x, y, 36, 40, game) {
 
-	vxIntelligence = -1;
-	vx = vxIntelligence;
+	
+	vx = 0.5;
 
 	state = game->stateMoving;
 
@@ -21,7 +21,9 @@ StandardEnemy::StandardEnemy(float x, float y, Game* game)
 void StandardEnemy::update() {
 	// Actualizar la animación
 	bool endAnimation = animation->update();
+	vx = 10;
 
+	/*
 	// Acabo la animación, no sabemos cual
 	if (endAnimation) {
 		// Estaba muriendo
@@ -64,7 +66,7 @@ void StandardEnemy::update() {
 	else {
 		vx = 0;
 	}
-
+	*/
 
 }
 

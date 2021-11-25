@@ -164,6 +164,7 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Audio.cpp" />
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="BasicProjectile.cpp" />
     <ClCompile Include="BasicTower.cpp" />
     <ClCompile Include="BlastTower.cpp" />
     <ClCompile Include="BlueEnemy.cpp" />
@@ -185,12 +186,14 @@
     <ClCompile Include="StandardEnemy.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="Tower.cpp" />
+    <ClCompile Include="TowerProjectile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Audio.h" />
     <ClInclude Include="Background.h" />
+    <ClInclude Include="BasicProjectile.h" />
     <ClInclude Include="BasicTower.h" />
     <ClInclude Include="BlastTower.h" />
     <ClInclude Include="BlueEnemy.h" />
@@ -211,6 +214,7 @@
     <ClInclude Include="StandardEnemy.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="Tower.h" />
+    <ClInclude Include="TowerProjectile.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

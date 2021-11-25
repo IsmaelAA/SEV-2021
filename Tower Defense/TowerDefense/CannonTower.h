@@ -7,12 +7,13 @@ class CannonTower :
 public:
 	CannonTower(float x, float y, Game* game);
 	void update();
+	TowerProjectile* shoot(Enemy* enemy);
 	int getRange();
 
 	//Stats
 	int attackSpeed = 5;
 	int projectileSpeed = 1;
 	int damage = 5;
-	int range = 5;
+	int range = 3;
 };
 

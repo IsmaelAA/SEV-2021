@@ -15,7 +15,7 @@
 #include "CannonTower.h"
 #include "FreezeTower.h"
 
-#include "Projectile.h"
+#include "TowerProjectile.h"
 
 #include "Text.h"
 #include <fstream> // Leer ficheros
@@ -47,8 +47,6 @@ public:
 	Space* space;
 
 	void mouseToControls(SDL_Event event); // USO DE MOUSE
-
-	
 	
 	void loadMap(string name);
 	void loadMapObject(char character, float x, float y);
@@ -65,7 +63,7 @@ public:
 
 	//Actors
 	list<Enemy*> enemies;
-	list<Projectile*> projectiles;
+	list<TowerProjectile*> towerProjectiles;
 	list<Tower*> towers;
 
 	bool controlContinue = false;
@@ -73,15 +71,16 @@ public:
 
 	Actor* backgroundPoints;
 	Text* textPoints;
-	int points = 1000;
+	int points;
 
 	Actor* backgroundLives;
 	Text* textLives;
-	int lives = 20;
+	int lives;
 
 	Audio* audioBackground;
 
-	int newEnemyTime = 0;
+	int timeToNewEnemy = 0;
+	int newEnemyTime = 150;
 
 	// Elementos de interfaz
 	Actor* buttonBasicTower;

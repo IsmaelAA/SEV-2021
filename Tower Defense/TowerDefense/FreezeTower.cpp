@@ -8,6 +8,11 @@ void FreezeTower::update()
 {
 }
 
+TowerProjectile* FreezeTower::shoot()
+{
+	return nullptr;
+}
+
 int FreezeTower::getRange()
 {
 	return range;

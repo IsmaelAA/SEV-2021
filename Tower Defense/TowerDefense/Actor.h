@@ -1,11 +1,11 @@
 #pragma once
 
 #include "Game.h"
-
 class Actor
 {
 public:
 	Actor(string filename, float x, float y, int width, int height, Game* game);
+	Actor(string filename, float x, float y, int width, int height, int fileWidth, int fileHeight, Game* game);
 	virtual void draw(float scrollx = 0, float scrolly = 0);
 	bool isOverlap(Actor* actor);
 	bool isInRender(float scrollX = 0, float scrollY = 0);
