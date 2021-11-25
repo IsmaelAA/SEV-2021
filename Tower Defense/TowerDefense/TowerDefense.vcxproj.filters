@@ -117,6 +117,15 @@
     <ClCompile Include="BasicTower.cpp">
       <Filter>Archivos de origen\actores\towers</Filter>
     </ClCompile>
+    <ClCompile Include="FreezeTower.cpp">
+      <Filter>Archivos de origen\actores\towers</Filter>
+    </ClCompile>
+    <ClCompile Include="BlastTower.cpp">
+      <Filter>Archivos de origen\actores\towers</Filter>
+    </ClCompile>
+    <ClCompile Include="CannonTower.cpp">
+      <Filter>Archivos de origen\actores\towers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -180,6 +189,15 @@
       <Filter>Archivos de encabezado\actores\towers</Filter>
     </ClInclude>
     <ClInclude Include="BasicTower.h">
+      <Filter>Archivos de encabezado\actores\towers</Filter>
+    </ClInclude>
+    <ClInclude Include="BlastTower.h">
+      <Filter>Archivos de encabezado\actores\towers</Filter>
+    </ClInclude>
+    <ClInclude Include="CannonTower.h">
+      <Filter>Archivos de encabezado\actores\towers</Filter>
+    </ClInclude>
+    <ClInclude Include="FreezeTower.h">
       <Filter>Archivos de encabezado\actores\towers</Filter>
     </ClInclude>
   </ItemGroup>

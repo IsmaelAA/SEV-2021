@@ -165,10 +165,13 @@
     <ClCompile Include="Audio.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="BasicTower.cpp" />
+    <ClCompile Include="BlastTower.cpp" />
     <ClCompile Include="BlueEnemy.cpp" />
     <ClCompile Include="BuildableTile.cpp" />
+    <ClCompile Include="CannonTower.cpp" />
     <ClCompile Include="EndTile.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="FreezeTower.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameLayer.cpp" />
     <ClCompile Include="InitialTile.cpp" />
@@ -189,10 +192,13 @@
     <ClInclude Include="Audio.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="BasicTower.h" />
+    <ClInclude Include="BlastTower.h" />
     <ClInclude Include="BlueEnemy.h" />
     <ClInclude Include="BuildableTile.h" />
+    <ClInclude Include="CannonTower.h" />
     <ClInclude Include="EndTile.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="FreezeTower.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameLayer.h" />
     <ClInclude Include="InitialTile.h" />

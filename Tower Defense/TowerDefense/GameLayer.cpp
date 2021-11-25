@@ -26,6 +26,7 @@ void GameLayer::init() {
 	towers.clear();
 
 	selectedTile = NULL;
+	selectedTower = NULL;
 
 	//Cargar HUD
 	loadHUD();
@@ -36,20 +37,27 @@ void GameLayer::init() {
 
 void GameLayer::loadHUD() {
 	//Interfaz torres
+
 	//buttonBasicTower
 	buttonBasicTower = new Actor("res/button_basic_tower.png", WIDTH * 0.6, HEIGHT * 0.90, 50, 50, game);
+	textPrecioBasic = new Text("precioBasic", WIDTH * 0.6, HEIGHT * 0.97, game);
+	textPrecioBasic->content = to_string(precioBasic);
 	//buttonCannonTower
 	buttonCannonTower = new Actor("res/button_cannon_tower.png", WIDTH * 0.7, HEIGHT * 0.90, 50, 50, game);
+	textPrecioCannon = new Text("precioCannon", WIDTH * 0.7, HEIGHT * 0.97, game);
+	textPrecioCannon->content = to_string(precioCannon);
 	//buttonFreezeTower
 	buttonFreezeTower = new Actor("res/button_freeze_tower.png", WIDTH * 0.8, HEIGHT * 0.90, 50, 50, game);
+	textPrecioFreeze = new Text("precioFreeze", WIDTH * 0.8, HEIGHT * 0.97, game);
+	textPrecioFreeze->content = to_string(precioFreeze);
 	//buttonBlastTower
 	buttonBlastTower = new Actor("res/button_blast_tower.png", WIDTH * 0.9, HEIGHT * 0.90, 50, 50, game);
+	textPrecioBlast = new Text("precioBlast", WIDTH * 0.9, HEIGHT * 0.97, game);
+	textPrecioBlast->content = to_string(precioBlast);
 
 	//Interfaz puntos
 	backgroundPoints = new Actor("res/puntos.png",
 		WIDTH * 0.85, HEIGHT * 0.05, 44, 36, game);
-
-	points = 0;
 
 	textPoints = new Text("puntos", WIDTH * 0.90, HEIGHT * 0.05, game);
 	textPoints->content = to_string(points);
@@ -58,12 +66,8 @@ void GameLayer::loadHUD() {
 	backgroundLives = new Actor("res/corazon.png",
 		WIDTH * 0.70, HEIGHT * 0.06, 44, 36, game);
 
-	lives = 20;
-
 	textLives = new Text("vidas", WIDTH * 0.77, HEIGHT * 0.05, game);
 	textLives->content = to_string(lives);
-
-
 	
 }
 
@@ -154,13 +158,6 @@ void GameLayer::update() {
 void GameLayer::draw() {
 	background->draw();
 
-	//Dibujar marcadores de puntos y vidas
-	textPoints->draw();
-	backgroundPoints->draw();
-
-	textLives->draw();
-	backgroundLives->draw();
-
 	//Dibujar casillas
 	initialTile->draw();
 	endTile->draw();
@@ -177,13 +174,33 @@ void GameLayer::draw() {
 	for (auto const& tower : towers) {
 		tower->draw();
 	}
+
 	// HUD
+	//Dibujar marcadores de puntos y vidas
+	textPoints->draw();
+	backgroundPoints->draw();
+
+	textLives->draw();
+	backgroundLives->draw();
+	//Dibujar botones torres
 	if (game->input == game->inputMouse) {
-		// HUD
 		buttonBasicTower->draw();
+		textPrecioBasic->draw();
+
 		buttonCannonTower->draw();
+		textPrecioCannon->draw();
+
 		buttonFreezeTower->draw();
+		textPrecioFreeze->draw();
+
 		buttonBlastTower->draw();
+		textPrecioBlast->draw();
+
+		if (selectedTower != NULL) {
+			Actor* rangeCircle = new Actor("res/range_circle2.png",selectedTower->x,selectedTower->y,
+				selectedTower->getRange()*40, selectedTower->getRange()*40,game);
+			rangeCircle->draw();
+		}
 	}
 
 	if (pause) {
@@ -315,6 +332,9 @@ void GameLayer::mouseToControls(SDL_Event event) {
 				if (selectedTile != NULL) {
 					selectedTile->texture = game->getTexture("res/buildable_tile.png");
 				}
+				// Que se deseleccione la torre si es que hubiera.
+				selectedTower = NULL;
+
 				selectedTile = buildableTile;
 				buildableTile->texture = game->getTexture("res/buildable_tile_selected.png");
 			}
@@ -322,42 +342,56 @@ void GameLayer::mouseToControls(SDL_Event event) {
 
 		//Interfaz torres
 		if (buttonBasicTower->containsPoint(motionX, motionY)) {
-			if (selectedTile != NULL) {
+			if (selectedTile != NULL && points >= precioBasic) {
+				updatePoints(-precioBasic);
 				towers.push_back(new BasicTower(selectedTile->x, selectedTile->y,game));
 				//Marcar como construida y deseleccionar la casilla al acabar
 				selectedTile->isBuilt = true;
-				releasteTile();
+				releaseTile();
 			}
 
 		}
 
 		if (buttonCannonTower->containsPoint(motionX, motionY)) {
-			if (selectedTile != NULL) {
-				towers.push_back(new BasicTower(selectedTile->x, selectedTile->y, game));
+			if (selectedTile != NULL && points >= precioCannon) {
+				updatePoints(-precioCannon);
+				towers.push_back(new CannonTower(selectedTile->x, selectedTile->y, game));
 				//Marcar como construida y deseleccionar la casilla al acabar
 				selectedTile->isBuilt = true;
-				releasteTile();
+				releaseTile();
 			}
 		}
 
 		if (buttonFreezeTower->containsPoint(motionX, motionY)) {
-			if (selectedTile != NULL) {
-				towers.push_back(new BasicTower(selectedTile->x, selectedTile->y, game));
+			if (selectedTile != NULL && points >= precioFreeze) {
+				updatePoints(-precioFreeze);
+				towers.push_back(new FreezeTower(selectedTile->x, selectedTile->y, game));
 				//Marcar como construida y deseleccionar la casilla al acabar
 				selectedTile->isBuilt = true;
-				releasteTile();
+				releaseTile();
 			}
 		}
 
 		if (buttonBlastTower->containsPoint(motionX, motionY)) {
-			if (selectedTile != NULL) {
-				towers.push_back(new BasicTower(selectedTile->x, selectedTile->y, game));
+			if (selectedTile != NULL && points >= precioBlast) {
+				updatePoints(-precioBlast);
+				towers.push_back(new BlastTower(selectedTile->x, selectedTile->y, game));
 				//Marcar como construida y deseleccionar la casilla al acabar
 				selectedTile->isBuilt = true;
-				releasteTile();
+				releaseTile();
 			}
 
 		}
+
+		for (auto const& tower : towers) {
+			if (tower->containsPoint(motionX, motionY)) {
+				selectedTower = tower;
+				releaseTile();
+		}
+		}
+
+		
+		
 	}
 	// Cada vez que se mueve
 	if (event.type == SDL_MOUSEMOTION) {
@@ -374,9 +408,15 @@ void GameLayer::mouseToControls(SDL_Event event) {
 	
 }
 
-void GameLayer::releasteTile() {
-	selectedTile->texture = game->getTexture("res/buildable_tile.png");
-	selectedTile = NULL;
+void GameLayer::releaseTile() {
+	if (selectedTile != NULL) {
+		selectedTile->texture = game->getTexture("res/buildable_tile.png");
+		selectedTile = NULL;
+	}
+}
+void GameLayer::updatePoints(int pointsToAdd) {
+	points += pointsToAdd;
+	textPoints->content = to_string(points);
 }
 
 

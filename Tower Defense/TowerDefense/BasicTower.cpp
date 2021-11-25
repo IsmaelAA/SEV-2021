@@ -7,3 +7,8 @@ BasicTower::BasicTower(float x, float y, Game* game)
 void BasicTower::update()
 {
 }
+
+int BasicTower::getRange()
+{
+	return range;
+}

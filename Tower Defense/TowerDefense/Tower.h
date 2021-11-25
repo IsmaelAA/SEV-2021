@@ -6,6 +6,7 @@ public:
 	Tower(string filename, float x, float y, int width, int height, Game* game);
 	virtual void update() = 0;
 
+	virtual int getRange() = 0;
 	//Stats
 	int attackSpeed = 0;
 	int projectileSpeed = 0;

@@ -11,6 +11,9 @@
 //Towers
 #include "Tower.h"
 #include "BasicTower.h"
+#include "BlastTower.h"
+#include "CannonTower.h"
+#include "FreezeTower.h"
 
 #include "Projectile.h"
 
@@ -70,11 +73,11 @@ public:
 
 	Actor* backgroundPoints;
 	Text* textPoints;
-	int points;
+	int points = 1000;
 
 	Actor* backgroundLives;
 	Text* textLives;
-	int lives;
+	int lives = 20;
 
 	Audio* audioBackground;
 
@@ -86,8 +89,22 @@ public:
 	Actor* buttonFreezeTower;
 	Actor* buttonBlastTower;
 
+	//Precios torres
+	Text* textPrecioBasic;
+	int precioBasic = 50;
+	Text* textPrecioCannon;
+	int precioCannon = 75;
+	Text* textPrecioFreeze;
+	int precioFreeze = 80;
+	Text* textPrecioBlast;
+	int precioBlast = 100;
+
 	BuildableTile* selectedTile;
-	void releasteTile();
+	void releaseTile();
+
+	Tower* selectedTower;
+
+	void updatePoints(int pointsToAdd);
 
 	Actor* message;
 	bool pause;
