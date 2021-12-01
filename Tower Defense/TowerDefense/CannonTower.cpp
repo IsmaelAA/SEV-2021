@@ -8,7 +8,7 @@ void CannonTower::update()
 {
 }
 
-TowerProjectile* CannonTower::shoot()
+TowerProjectile* CannonTower::shoot(Enemy* e)
 {
 	return nullptr;
 }

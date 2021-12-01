@@ -8,7 +8,7 @@ void FreezeTower::update()
 {
 }
 
-TowerProjectile* FreezeTower::shoot()
+TowerProjectile* FreezeTower::shoot(Enemy* e)
 {
 	return nullptr;
 }

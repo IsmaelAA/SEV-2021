@@ -6,7 +6,7 @@ class BlastTower :
 
 public:
 	BlastTower(float x, float y, Game* game);
-	TowerProjectile* shoot();
+	TowerProjectile* shoot(Enemy* enemy);
 	int getRange();
 	void update();
 

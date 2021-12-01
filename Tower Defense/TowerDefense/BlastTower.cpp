@@ -3,7 +3,7 @@ BlastTower::BlastTower(float x, float y, Game* game)
 	: Tower("res/blast_tower.png", x, y, 40, 40, game) {
 }
 
-TowerProjectile* BlastTower::shoot()
+TowerProjectile* BlastTower::shoot(Enemy* enemy)
 {
 	return nullptr;
 }

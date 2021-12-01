@@ -1,8 +1,20 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: El directorio intermedio (Debug\) contiene archivos compartidos de otro proyecto (NavesAnime.vcxproj, NavesL4.vcxproj). Esto puede dar lugar a un comportamiento incorrecto de limpieza y recompilación.
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: El directorio intermedio (Debug\) contiene archivos compartidos de otro proyecto (NavesAnime.vcxproj, NavesL4.vcxproj). Esto puede dar lugar a un comportamiento incorrecto de limpieza y recompilación.
   Actor.cpp
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas\Plataformas\Actor.cpp(7,12): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas\Plataformas\Actor.cpp(8,12): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas\Plataformas\Actor.cpp(27,32): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+  Animation.cpp
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas\Plataformas\Animation.cpp(9,21): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas\Plataformas\Animation.cpp(10,22): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas\Plataformas\Animation.cpp(11,20): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas\Plataformas\Animation.cpp(12,21): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas\Plataformas\Animation.cpp(27,13): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas\Plataformas\Animation.cpp(28,13): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas\Plataformas\Animation.cpp(52,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas\Plataformas\Animation.cpp(60,20): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas\Plataformas\Animation.cpp(61,20): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+  Audio.cpp
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas\Plataformas\Audio.h(6,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
   Background.cpp
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas\Plataformas\Background.cpp(19,9): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
   Enemy.cpp
@@ -43,6 +55,8 @@ C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas\Plataformas\GameLayer.cpp(4
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas\Plataformas\GameLayer.cpp(470,34): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas\Plataformas\GameLayer.cpp(473,42): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas\Plataformas\GameLayer.cpp(473,33): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+  Layer.cpp
+  Main.cpp
   MenuLayer.cpp
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas\Plataformas\MenuLayer.cpp(91,38): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas\Plataformas\MenuLayer.cpp(91,29): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
@@ -79,6 +93,9 @@ C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas\Plataformas\Space.cpp(135,3
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas\Plataformas\Space.cpp(165,26): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas\Plataformas\Space.cpp(172,30): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
 C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas\Plataformas\Space.cpp(204,26): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+  Text.cpp
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas\Plataformas\Text.cpp(5,12): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas\Plataformas\Text.cpp(6,12): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
   Tile.cpp
   Generando código...
   Plataformas.vcxproj -> C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Plataformas\Debug\Plataformas.exe

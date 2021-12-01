@@ -101,7 +101,7 @@ void GameLayer::update() {
 
 	for (auto const& tower : towers) {
 		tower->update();
-		TowerProjectile* newProjectile = tower->shoot();
+		TowerProjectile* newProjectile = tower->shoot(NULL);
 		if (newProjectile != NULL) {
 			space->addDynamicActor(newProjectile);
 			towerProjectiles.push_back(newProjectile);
@@ -250,7 +250,7 @@ void GameLayer::draw() {
 
 		if (selectedTower != NULL) {
 			Actor* rangeCircle = new Actor("res/range_circle.png",selectedTower->x,selectedTower->y,
-				selectedTower->getRange()*20* 3.14159, selectedTower->getRange()*20* 3.14159,200,200,game);
+				(selectedTower->getRange()-1) *80 + 40, (selectedTower->getRange() - 1) * 80 + 40,200,200,game);
 			rangeCircle->draw();
 		}
 	}

@@ -7,7 +7,7 @@ class FreezeTower :
 public:
 	FreezeTower(float x, float y, Game* game);
 	void update();
-	TowerProjectile* shoot();
+	TowerProjectile* shoot(Enemy* e);
 	int getRange();
 
 	//Stats
