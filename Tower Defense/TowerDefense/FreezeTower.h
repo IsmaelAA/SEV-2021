@@ -12,9 +12,8 @@ public:
 	int getRange();
 
 	//Stats
-	int attackSpeed = 1;
-	int shootTime = 0;
-	float slowRatio = 0.5;
-	int range = 4;
+	bool isActive = false;
+	float slowRatio = 2;
+	int range = 3;
 };
 

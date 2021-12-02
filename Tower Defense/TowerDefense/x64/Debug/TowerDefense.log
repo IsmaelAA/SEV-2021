@@ -1,0 +1,155 @@
+﻿  BasicProjectile.cpp
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\BasicProjectile.cpp(15,9): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\BasicProjectile.cpp(17,9): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\BasicProjectile.cpp(21,9): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\BasicProjectile.cpp(23,9): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+  BasicTower.cpp
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\BasicTower.cpp(18,39): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\BasicTower.cpp(18,37): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  BlastTower.cpp
+  BlueEnemy.cpp
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\Audio.h(6,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\BlueEnemy.cpp(8,62): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\BlueEnemy.cpp(8,55): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\BlueEnemy.cpp(11,68): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\BlueEnemy.cpp(11,61): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  CannonProjectile.cpp
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\CannonProjectile.cpp(15,9): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\CannonProjectile.cpp(17,9): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\CannonProjectile.cpp(21,9): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\CannonProjectile.cpp(23,9): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+  CannonTower.cpp
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\CannonTower.cpp(18,40): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\CannonTower.cpp(18,37): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  EndTile.cpp
+  Enemy.cpp
+  FreezeProjectile.cpp
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\FreezeProjectile.cpp(7,23): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\FreezeProjectile.cpp(18,11): warning C4552: "*": el resultado de la expresión no se usa
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\FreezeProjectile.cpp(19,11): warning C4552: "*": el resultado de la expresión no se usa
+  FreezeTower.cpp
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\FreezeTower.cpp(13,35): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\FreezeTower.cpp(13,32): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  Game.cpp
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\Audio.h(6,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\StandardEnemy.h(3,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\Game.cpp(69,56): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\Game.cpp(69,35): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+  GameLayer.cpp
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\Audio.h(6,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\StandardEnemy.h(3,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(89,77): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(92,104): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(93,79): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(97,79): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(101,77): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(113,45): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(115,66): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(134,69): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(134,53): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(314,88): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(314,71): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(340,33): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(346,13): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(347,13): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(446,46): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(446,37): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(459,48): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(459,39): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(462,66): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(462,49): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(470,49): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(470,40): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(473,67): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(473,50): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(480,49): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(480,40): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(483,67): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(483,50): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(490,48): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(490,39): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(493,66): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(493,49): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(502,38): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\GameLayer.cpp(502,29): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+  InitialTile.cpp
+  PathTile.cpp
+  Player.cpp
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\Audio.h(6,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\Player.cpp(9,10): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\Player.cpp(9,3): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\Player.cpp(11,10): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\Player.cpp(11,3): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\Player.cpp(13,68): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\Player.cpp(13,61): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\Player.cpp(15,69): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\Player.cpp(15,62): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\Player.cpp(17,76): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\Player.cpp(17,69): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\Player.cpp(19,77): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\Player.cpp(19,70): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\Player.cpp(22,10): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\Player.cpp(22,3): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\Player.cpp(24,10): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\Player.cpp(24,3): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  StandardEnemy.cpp
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\StandardEnemy.h(3,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\StandardEnemy.cpp(11,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\StandardEnemy.cpp(11,50): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\StandardEnemy.cpp(14,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\StandardEnemy.cpp(14,56): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\StandardEnemy.cpp(29,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\StandardEnemy.cpp(29,50): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\StandardEnemy.cpp(32,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\StandardEnemy.cpp(32,56): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  Tower.cpp
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\Tower.cpp(11,15): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\Tower.cpp(14,17): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+  TowerProjectile.cpp
+  Generando código...
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\TowerDefense\BlastTower.cpp(22): warning C4715: 'BlastTower::shoot': no todas las rutas de acceso de control devuelven un valor
+Actor.obj : error LNK2019: símbolo externo SDL_RenderCopyEx sin resolver al que se hace referencia en la función "public: virtual void __cdecl Actor::draw(float,float)" (?draw@Actor@@UEAAXMM@Z)
+Animation.obj : error LNK2001: símbolo externo SDL_RenderCopyEx sin resolver
+Audio.obj : error LNK2019: símbolo externo SDL_RWFromFile sin resolver al que se hace referencia en la función "public: __cdecl Audio::Audio(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)" (??0Audio@@QEAA@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z)
+Audio.obj : error LNK2019: símbolo externo SDL_OpenAudioDevice sin resolver al que se hace referencia en la función "public: __cdecl Audio::Audio(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)" (??0Audio@@QEAA@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z)
+Audio.obj : error LNK2019: símbolo externo SDL_PauseAudioDevice sin resolver al que se hace referencia en la función "public: void __cdecl Audio::play(void)" (?play@Audio@@QEAAXXZ)
+Audio.obj : error LNK2019: símbolo externo SDL_LoadWAV_RW sin resolver al que se hace referencia en la función "public: __cdecl Audio::Audio(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)" (??0Audio@@QEAA@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z)
+Audio.obj : error LNK2019: símbolo externo SDL_FreeWAV sin resolver al que se hace referencia en la función "public: __cdecl Audio::~Audio(void)" (??1Audio@@QEAA@XZ)
+Audio.obj : error LNK2019: símbolo externo SDL_QueueAudio sin resolver al que se hace referencia en la función "public: void __cdecl Audio::play(void)" (?play@Audio@@QEAAXXZ)
+Audio.obj : error LNK2019: símbolo externo SDL_GetQueuedAudioSize sin resolver al que se hace referencia en la función "public: void __cdecl Audio::play(void)" (?play@Audio@@QEAAXXZ)
+Audio.obj : error LNK2019: símbolo externo SDL_ClearQueuedAudio sin resolver al que se hace referencia en la función "public: void __cdecl Audio::play(void)" (?play@Audio@@QEAAXXZ)
+Audio.obj : error LNK2019: símbolo externo SDL_CloseAudioDevice sin resolver al que se hace referencia en la función "public: __cdecl Audio::~Audio(void)" (??1Audio@@QEAA@XZ)
+Audio.obj : error LNK2019: símbolo externo Mix_OpenAudio sin resolver al que se hace referencia en la función "public: __cdecl Audio::Audio(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)" (??0Audio@@QEAA@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z)
+Audio.obj : error LNK2019: símbolo externo Mix_LoadMUS sin resolver al que se hace referencia en la función "public: __cdecl Audio::Audio(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)" (??0Audio@@QEAA@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z)
+Audio.obj : error LNK2019: símbolo externo Mix_FreeMusic sin resolver al que se hace referencia en la función "public: __cdecl Audio::~Audio(void)" (??1Audio@@QEAA@XZ)
+Audio.obj : error LNK2019: símbolo externo Mix_PlayMusic sin resolver al que se hace referencia en la función "public: void __cdecl Audio::play(void)" (?play@Audio@@QEAAXXZ)
+Audio.obj : error LNK2019: símbolo externo Mix_CloseAudio sin resolver al que se hace referencia en la función "public: __cdecl Audio::~Audio(void)" (??1Audio@@QEAA@XZ)
+Game.obj : error LNK2019: símbolo externo SDL_GetError sin resolver al que se hace referencia en la función "public: __cdecl Game::Game(void)" (??0Game@@QEAA@XZ)
+Game.obj : error LNK2019: símbolo externo SDL_GetCurrentDisplayMode sin resolver al que se hace referencia en la función "public: void __cdecl Game::scale(void)" (?scale@Game@@QEAAXXZ)
+Game.obj : error LNK2019: símbolo externo SDL_SetWindowTitle sin resolver al que se hace referencia en la función "public: __cdecl Game::Game(void)" (??0Game@@QEAA@XZ)
+Game.obj : error LNK2019: símbolo externo SDL_SetWindowSize sin resolver al que se hace referencia en la función "public: void __cdecl Game::scale(void)" (?scale@Game@@QEAAXXZ)
+Game.obj : error LNK2019: símbolo externo SDL_SetHint sin resolver al que se hace referencia en la función "public: __cdecl Game::Game(void)" (??0Game@@QEAA@XZ)
+Game.obj : error LNK2019: símbolo externo SDL_CreateWindowAndRenderer sin resolver al que se hace referencia en la función "public: __cdecl Game::Game(void)" (??0Game@@QEAA@XZ)
+Game.obj : error LNK2019: símbolo externo SDL_CreateTextureFromSurface sin resolver al que se hace referencia en la función "public: struct SDL_Texture * __cdecl Game::getTexture(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?getTexture@Game@@QEAAPEAUSDL_Texture@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+Text.obj : error LNK2001: símbolo externo SDL_CreateTextureFromSurface sin resolver
+Game.obj : error LNK2019: símbolo externo SDL_RenderSetScale sin resolver al que se hace referencia en la función "public: void __cdecl Game::scale(void)" (?scale@Game@@QEAAXXZ)
+Game.obj : error LNK2019: símbolo externo SDL_GetTicks sin resolver al que se hace referencia en la función "public: void __cdecl Game::loop(void)" (?loop@Game@@QEAAXXZ)
+Game.obj : error LNK2019: símbolo externo SDL_Delay sin resolver al que se hace referencia en la función "public: void __cdecl Game::loop(void)" (?loop@Game@@QEAAXXZ)
+Game.obj : error LNK2019: símbolo externo SDL_Init sin resolver al que se hace referencia en la función "public: __cdecl Game::Game(void)" (??0Game@@QEAA@XZ)
+Game.obj : error LNK2019: símbolo externo IMG_Load sin resolver al que se hace referencia en la función "public: struct SDL_Texture * __cdecl Game::getTexture(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?getTexture@Game@@QEAAPEAUSDL_Texture@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+Game.obj : error LNK2019: símbolo externo TTF_Init sin resolver al que se hace referencia en la función "public: __cdecl Game::Game(void)" (??0Game@@QEAA@XZ)
+Game.obj : error LNK2019: símbolo externo TTF_OpenFont sin resolver al que se hace referencia en la función "public: __cdecl Game::Game(void)" (??0Game@@QEAA@XZ)
+GameLayer.obj : error LNK2019: símbolo externo SDL_PollEvent sin resolver al que se hace referencia en la función "public: virtual void __cdecl GameLayer::processControls(void)" (?processControls@GameLayer@@UEAAXXZ)
+MenuLayer.obj : error LNK2001: símbolo externo SDL_PollEvent sin resolver
+GameLayer.obj : error LNK2019: símbolo externo SDL_RenderPresent sin resolver al que se hace referencia en la función "public: virtual void __cdecl GameLayer::draw(void)" (?draw@GameLayer@@UEAAXXZ)
+MenuLayer.obj : error LNK2001: símbolo externo SDL_RenderPresent sin resolver
+Text.obj : error LNK2019: símbolo externo SDL_FreeSurface sin resolver al que se hace referencia en la función "public: void __cdecl Text::draw(void)" (?draw@Text@@QEAAXXZ)
+Text.obj : error LNK2019: símbolo externo SDL_RenderCopy sin resolver al que se hace referencia en la función "public: void __cdecl Text::draw(void)" (?draw@Text@@QEAAXXZ)
+Text.obj : error LNK2019: símbolo externo SDL_DestroyTexture sin resolver al que se hace referencia en la función "public: void __cdecl Text::draw(void)" (?draw@Text@@QEAAXXZ)
+Text.obj : error LNK2019: símbolo externo TTF_RenderText_Blended sin resolver al que se hace referencia en la función "public: void __cdecl Text::draw(void)" (?draw@Text@@QEAAXXZ)
+C:\videojuegos\lib\SDL2.lib : warning LNK4272: el tipo de máquina de biblioteca 'x86' está en conflicto con el tipo de máquina de destino 'x64'
+C:\videojuegos\lib\SDL2main.lib : warning LNK4272: el tipo de máquina de biblioteca 'x86' está en conflicto con el tipo de máquina de destino 'x64'
+C:\videojuegos\lib\SDL2_image.lib : warning LNK4272: el tipo de máquina de biblioteca 'x86' está en conflicto con el tipo de máquina de destino 'x64'
+C:\videojuegos\lib\SDL2_ttf.lib : warning LNK4272: el tipo de máquina de biblioteca 'x86' está en conflicto con el tipo de máquina de destino 'x64'
+C:\videojuegos\lib\SDL2_mixer.lib : warning LNK4272: el tipo de máquina de biblioteca 'x86' está en conflicto con el tipo de máquina de destino 'x64'
+C:\Users\isman\Desktop\P1Cuatri\SEV-2021\Tower Defense\x64\Debug\TowerDefense.exe : fatal error LNK1120: 35 externos sin resolver

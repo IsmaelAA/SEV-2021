@@ -20,7 +20,7 @@ public:
 	list<PathTile*> pathTiles;
 
 	int healthPoints = 5;
-	float speed = 1;
+	float speed = 4;
 	int pointsDrop = 10;
 };
 

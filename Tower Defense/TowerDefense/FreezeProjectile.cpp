@@ -14,11 +14,11 @@ bool FreezeProjectile::update()
 
 void FreezeProjectile::hit(Enemy* enemy)
 {
-	enemy->vx* slowRatio;
-	enemy->vy* slowRatio;
+	enemy->vx /=slowRatio;
+	enemy->vy /=slowRatio;
 }
 
 int FreezeProjectile::getTimeToExpire()
 {
-	return timeToExpire;
+	return 10;
 }

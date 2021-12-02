@@ -229,7 +229,7 @@ void GameLayer::update() {
 	}
 	// Si el projectil se sale de pantalla borrar.
 	for (auto const& projectile : towerProjectiles) {
-		if (projectile->isInRender() == false || projectile->vx == 0) {
+		if (projectile->isInRender() == false ) {
 
 			bool pInList = std::find(deleteProjectiles.begin(),
 				deleteProjectiles.end(),
