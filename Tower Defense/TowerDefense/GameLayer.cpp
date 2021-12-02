@@ -75,6 +75,7 @@ void GameLayer::loadHUD() {
 }
 
 void GameLayer::update() {
+	
 
 	if (pause) {
 		return;
@@ -87,7 +88,7 @@ void GameLayer::update() {
 	//Generacion de enemigos
 	if (timeToNewEnemy <= 0) {
 		timeToNewEnemy = newEnemyTime;
-		StandardEnemy* se = new  StandardEnemy(initialTile->x, initialTile->y, game);
+		StandardEnemy* se = new  StandardEnemy(initialTile->x, initialTile->y, pathTiles, game);
 		enemies.push_back(se);
 		space->addDynamicActor(se);
 	}
@@ -101,22 +102,33 @@ void GameLayer::update() {
 
 	for (auto const& tower : towers) {
 		tower->update();
-		TowerProjectile* newProjectile = tower->shoot(NULL);
-		if (newProjectile != NULL) {
-			space->addDynamicActor(newProjectile);
-			towerProjectiles.push_back(newProjectile);
+
+		for (auto const& enemy : enemies) {
+			// Mirar si hay enemigos en el rango entonces disparar
+			if (tower->hasInRange(enemy)) {
+				TowerProjectile* newProjectile = tower->shoot(NULL);
+				if (newProjectile != NULL) {
+					space->addDynamicActor(newProjectile);
+					towerProjectiles.push_back(newProjectile);
+				}
+			}
 		}
 	}
 
+
+	list<Enemy*> deleteEnemies;
+	list<TowerProjectile*> deleteProjectiles;
+
 	for (auto const& tProjectile : towerProjectiles) {
-		tProjectile->update();
+		//Coge el primer enemigo de la lista y se lo pasa al update de cada proyectil.
+		if (!enemies.empty())
+			tProjectile->update(enemies.front());
+		else //Si no hay enemigos elimina el proyectil
+			deleteProjectiles.push_back(tProjectile);
 	}
 
 
 	// COLISIONES 
-	list<Enemy*> deleteEnemies;
-	list<TowerProjectile*> deleteProjectiles;
-
 	// Colisiones , Enemy - Projectile
 	for (auto const& enemy : enemies) {
 		for (auto const& projectile : towerProjectiles) {
@@ -137,7 +149,7 @@ void GameLayer::update() {
 					deleteEnemies.push_back(enemy);
 				}
 				
-				points++;
+				points+=enemy->getPoints();
 				textPoints->content = to_string(points);
 
 			}

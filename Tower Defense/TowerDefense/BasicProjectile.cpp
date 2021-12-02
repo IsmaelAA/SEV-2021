@@ -7,7 +7,21 @@ BasicProjectile::BasicProjectile(float x, float y, int projectileSpeed, int proj
 			this->projectileDamage = projectileDamage;
 		}
 }
-void BasicProjectile::update()
+void BasicProjectile::update(Enemy* enemy)
 {
-	vx = projectileSpeed;
+
+	if (enemy != NULL) {
+		if (enemy->x < this->x)
+			vx = -projectileSpeed;
+		if (enemy->x > this->x)
+			vx = projectileSpeed;
+		if (enemy->x == this->x)
+			vx = 0;
+		if (enemy->y < this->y)
+			vy = -projectileSpeed;
+		if (enemy->y > this->y)
+			vy = projectileSpeed;
+		if (enemy->y == this->y)
+			vy = 0;
+	}
 }

@@ -16,4 +16,6 @@ public:
 
 	int tiempoCiclo = 80;
 	int ciclo = 80;
+
+	int pointsDrop = 15;
 };

@@ -4,6 +4,6 @@ class BasicProjectile : public TowerProjectile
 {
 public:
 	BasicProjectile(float x, float y,int projectileSpeed,int projectileDamage, Game* game);
-	void update();
+	void update(Enemy* enemy);
 };
 
