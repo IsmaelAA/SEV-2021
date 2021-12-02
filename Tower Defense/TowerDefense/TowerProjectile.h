@@ -5,7 +5,12 @@ class TowerProjectile : public Actor
 {
 public:
 	TowerProjectile(string filename, float x, float y, int width, int height, Game* game);
-	virtual void update(Enemy* enemy) = 0;
+	TowerProjectile(string filename, float x, float y, int width, int height,int fileWidth, int fileHeight, Game* game);
+	virtual bool update() = 0;
+	virtual void hit(Enemy* enemy) = 0;
+	virtual int getTimeToExpire() = 0;
+
+	Enemy* targetEnemy;
 	int projectileDamage;
 	int projectileSpeed;
 };

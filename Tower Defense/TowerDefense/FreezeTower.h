@@ -1,5 +1,6 @@
 #pragma once
 #include "Tower.h"
+#include "FreezeProjectile.h"
 class FreezeTower :
     public Tower
 {
@@ -11,9 +12,9 @@ public:
 	int getRange();
 
 	//Stats
-	int attackSpeed = 5;
-	int projectileSpeed = 1;
-	int damage = 5;
+	int attackSpeed = 1;
+	int shootTime = 0;
+	float slowRatio = 0.5;
 	int range = 4;
 };
 

@@ -1,5 +1,6 @@
 #pragma once
 #include "Tower.h"
+#include "CannonProjectile.h"
 class CannonTower :
     public Tower
 {
@@ -10,9 +11,11 @@ public:
 	TowerProjectile* shoot(Enemy* enemy);
 	int getRange();
 
+
 	//Stats
-	int attackSpeed = 5;
-	int projectileSpeed = 1;
+	int shootTime = 0;
+	int attackSpeed = 50;
+	int projectileSpeed = 2;
 	int damage = 5;
 	int range = 3;
 };

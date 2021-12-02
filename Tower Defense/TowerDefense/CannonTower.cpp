@@ -6,11 +6,20 @@ CannonTower::CannonTower(float x, float y, Game* game)
 
 void CannonTower::update()
 {
+	if (shootTime > 0) {
+		shootTime--;
+	}
 }
 
-TowerProjectile* CannonTower::shoot(Enemy* e)
+TowerProjectile* CannonTower::shoot(Enemy* enemy)
 {
-	return nullptr;
+	if (shootTime <= 0) {
+		shootTime = attackSpeed;
+		return new CannonProjectile(enemy,x, y, projectileSpeed, damage, game);
+	}
+	else {
+		return NULL;
+	}
 }
 
 int CannonTower::getRange()

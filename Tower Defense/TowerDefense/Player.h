@@ -1,14 +1,13 @@
 #pragma once
 
 #include "Actor.h"
-#include "Projectile.h" 
+
 #include "Animation.h"
 #include "Audio.h"
 class Player : public Actor
 {
 public:
 	Player(float x, float y, Game* game);
-	Projectile* shoot();
 	void update();
 	void moveX(float axis);
 	void moveY(float axis);

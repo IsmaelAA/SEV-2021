@@ -10,7 +10,8 @@ public:
 	virtual void update() = 0;
 	virtual void impacted() = 0;
 	virtual int getPoints() = 0;
+	virtual int getHealthPoints() = 0;
+	virtual void subHealthPoints(int newHP) = 0;
 
 	int state = 0;
-	int pointsDrop = 0;
 };

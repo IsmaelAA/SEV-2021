@@ -13,7 +13,7 @@ GameLayer::GameLayer(Game* game)
 void GameLayer::init() {
 	space = new Space(0);
 
-	audioBackground = new Audio("res/musica_ambiente.mp3", true);
+	audioBackground = new Audio("res/Sore_Point.mp3", true);
 	audioBackground->play();
 
 	background = new Background("res/fondo_3.png", WIDTH * 0.5, HEIGHT * 0.5, -1, game);
@@ -35,6 +35,49 @@ void GameLayer::init() {
 	loadHUD();
 	//Cargar mapa
 	loadMap("res/map" + to_string(game->currentLevel) + ".txt");
+	
+	// Ordenar las pathTiles
+	pathTiles = ordenaPathTiles();
+
+}
+
+list<PathTile*> GameLayer::ordenaPathTiles() {
+
+	// Ordenar las pathTiles para el algoritmo de movimiento de los enenigos no es lo mas optimo pero bueno sirve.
+	this->pathTiles.sort([](const PathTile* a, const PathTile* b) {
+		if (a->x < b->x) {
+			return 1;
+		}
+		return 0;
+		});
+
+	list<PathTile*> newPathTiles;
+	list<PathTile*> auxPathTiles = pathTiles;
+	PathTile* prevPathTile = pathTiles.front();
+	newPathTiles.push_back(prevPathTile);
+	auxPathTiles.remove(prevPathTile);
+
+	while (newPathTiles.size() != pathTiles.size()) {
+		for (auto const& pathTile : auxPathTiles) {
+
+			if (abs(prevPathTile->x - pathTile->x) == 40 && abs(prevPathTile->y - pathTile->y) == 0) {
+				prevPathTile = pathTile;
+				newPathTiles.push_back(pathTile);
+				auxPathTiles.remove(prevPathTile);
+				break;
+			}
+
+			if (abs(prevPathTile->x - pathTile->x) == 0 && abs(prevPathTile->y - pathTile->y) == 40) {
+				prevPathTile = pathTile;
+				newPathTiles.push_back(pathTile);
+				auxPathTiles.remove(prevPathTile);
+				break;
+			}
+		}
+
+	}
+
+	return newPathTiles;
 
 }
 
@@ -106,7 +149,7 @@ void GameLayer::update() {
 		for (auto const& enemy : enemies) {
 			// Mirar si hay enemigos en el rango entonces disparar
 			if (tower->hasInRange(enemy)) {
-				TowerProjectile* newProjectile = tower->shoot(NULL);
+				TowerProjectile* newProjectile = tower->shoot(enemy);
 				if (newProjectile != NULL) {
 					space->addDynamicActor(newProjectile);
 					towerProjectiles.push_back(newProjectile);
@@ -115,42 +158,49 @@ void GameLayer::update() {
 		}
 	}
 
-
 	list<Enemy*> deleteEnemies;
 	list<TowerProjectile*> deleteProjectiles;
 
+	// Los proyectiles siempre van hacia el enemigo al que se le asigno en su creacion.
 	for (auto const& tProjectile : towerProjectiles) {
-		//Coge el primer enemigo de la lista y se lo pasa al update de cada proyectil.
-		if (!enemies.empty())
-			tProjectile->update(enemies.front());
-		else //Si no hay enemigos elimina el proyectil
+		if (!tProjectile->update()) {
+			//si el update devuelve false significa que ya no hay enemigo al que targetear.
 			deleteProjectiles.push_back(tProjectile);
+		}	
 	}
-
 
 	// COLISIONES 
 	// Colisiones , Enemy - Projectile
 	for (auto const& enemy : enemies) {
 		for (auto const& projectile : towerProjectiles) {
 			if (enemy->isOverlap(projectile)) {
-				bool pInList = std::find(deleteProjectiles.begin(),
-					deleteProjectiles.end(),
-					projectile) != deleteProjectiles.end();
+				
+				projectile->hit(enemy);
 
-				if (!pInList) {
-					deleteProjectiles.push_back(projectile);
+				if (projectile->getTimeToExpire() <= 0) {
+					bool pInList = std::find(deleteProjectiles.begin(),
+						deleteProjectiles.end(),
+						projectile) != deleteProjectiles.end();
+
+					if (!pInList) {
+						deleteProjectiles.push_back(projectile);
+					}
 				}
 
-				bool eInList = std::find(deleteEnemies.begin(),
-					deleteEnemies.end(),
-					enemy) != deleteEnemies.end();
-				
-				if (!eInList) {
-					deleteEnemies.push_back(enemy);
+			
+				if (enemy->getHealthPoints() <= 0) {
+					enemy->impacted();
+					bool eInList = std::find(deleteEnemies.begin(),
+						deleteEnemies.end(),
+						enemy) != deleteEnemies.end();
+
+					if (!eInList) {
+						deleteEnemies.push_back(enemy);
+					}
+					//Actualizar puntos
+					points += enemy->getPoints();
+					textPoints->content = to_string(points);
 				}
-				
-				points+=enemy->getPoints();
-				textPoints->content = to_string(points);
 
 			}
 		}
@@ -454,8 +504,6 @@ void GameLayer::mouseToControls(SDL_Event event) {
 				releaseTile();
 		}
 		}
-
-		
 		
 	}
 	// Cada vez que se mueve

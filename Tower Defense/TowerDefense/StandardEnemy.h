@@ -9,6 +9,8 @@ public:
 	void draw(float scrollX = 0, float scrollY = 0) override; // Va a sobrescribir
 	void update();
 	int getPoints();
+	int getHealthPoints();
+	void subHealthPoints(int newHP);
 	void impacted(); // Recibe impacto y pone animación de morir
 
 	Animation* aMoving;
@@ -16,6 +18,8 @@ public:
 	Animation* aDying;
 	
 	list<PathTile*> pathTiles;
+
+	int healthPoints = 5;
 	float speed = 1;
 	int pointsDrop = 10;
 };

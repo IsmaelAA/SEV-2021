@@ -1,27 +1,39 @@
 #include "BasicProjectile.h"
 
-BasicProjectile::BasicProjectile(float x, float y, int projectileSpeed, int projectileDamage, Game* game)
-	: TowerProjectile("res/basic_projectile.png", x, y, 20, 20, game) {
+BasicProjectile::BasicProjectile(Enemy* enemy,float x, float y, int projectileSpeed, int projectileDamage, Game* game)
+	: TowerProjectile("res/basic_projectile.png", x, y, 10, 10,20,20, game) {
 		{
+			this->targetEnemy = enemy;
 			this->projectileSpeed = projectileSpeed;
 			this->projectileDamage = projectileDamage;
 		}
 }
-void BasicProjectile::update(Enemy* enemy)
+bool BasicProjectile::update()
 {
-
-	if (enemy != NULL) {
-		if (enemy->x < this->x)
+	if (targetEnemy->isInRender()) {
+		if (targetEnemy->x < this->x)
 			vx = -projectileSpeed;
-		if (enemy->x > this->x)
+		if (targetEnemy->x > this->x)
 			vx = projectileSpeed;
-		if (enemy->x == this->x)
+		if (targetEnemy->x == this->x)
 			vx = 0;
-		if (enemy->y < this->y)
+		if (targetEnemy->y < this->y)
 			vy = -projectileSpeed;
-		if (enemy->y > this->y)
+		if (targetEnemy->y > this->y)
 			vy = projectileSpeed;
-		if (enemy->y == this->y)
+		if (targetEnemy->y == this->y)
 			vy = 0;
-	}
+		return true;
+	}else
+		return false;
+}
+
+void BasicProjectile::hit(Enemy* enemy)
+{
+	enemy->subHealthPoints(this->projectileDamage);
+}
+
+int BasicProjectile::getTimeToExpire()
+{
+	return timeToExpire;
 }

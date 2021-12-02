@@ -143,25 +143,6 @@ void Player::jump() {
 
 }
 
-Projectile* Player::shoot() {
-	if (shootTime == 0) {
-		audioShoot->play();
-		state = game->stateShooting;
-		shootTime = shootCadence;
-		aShootingLeft->currentFrame = 0; //"Rebobinar" animación
-		aShootingRight->currentFrame = 0; //"Rebobinar" animación
-		Projectile* projectile = new Projectile(x, y, game);
-		if (orientation == game->orientationLeft) {
-			projectile->vx = projectile->vx * -1; // Invertir
-		}
-		return projectile;
-
-	}
-	else {
-		return NULL;
-	}
-}
-
 void Player::draw(float scrollX, float scrollY) {
 	if (invulnerableTime == 0) {
 		animation->draw(x - scrollX, y - scrollY);

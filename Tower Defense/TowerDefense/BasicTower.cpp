@@ -14,16 +14,12 @@ void BasicTower::update()
 TowerProjectile* BasicTower::shoot(Enemy* enemy)
 {
 	if(shootTime<=0){
-		
 		shootTime = attackSpeed;
-	
-
-		return new BasicProjectile(x,y,projectileSpeed,damage,game);
+		return new BasicProjectile(enemy, x,y,projectileSpeed,damage,game);
 	}
 	else {
 		return NULL;
 	}
-	
 }
 
 int BasicTower::getRange()

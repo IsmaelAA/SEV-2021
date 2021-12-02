@@ -12,8 +12,8 @@ public:
 	//Stats
 	int attackSpeed = 20;
 	int shootTime = 0;
-	int projectileSpeed = 10;
-	int damage = 5;
+	int projectileSpeed = 3;
+	int damage = 1;
 	int range = 3;
 };
 

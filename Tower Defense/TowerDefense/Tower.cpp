@@ -8,7 +8,7 @@ bool Tower::hasInRange(Enemy* enemy)
 {
 	int enemyX = enemy->x;
 	int enemyY = enemy->y;
-	float radius = (this->getRange() - 1) * 40 +40;
+	float radius = (this->getRange() - 1) * 40+20;
 	
 	// (xp−xc)^2+(yp−yc)^2 
 	float distance = pow(enemyX - this->x, 2) + pow(enemyY - this->y, 2);

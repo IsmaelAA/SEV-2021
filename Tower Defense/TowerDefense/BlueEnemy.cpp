@@ -66,6 +66,16 @@ void BlueEnemy::update() {
 
 }
 
+int BlueEnemy::getHealthPoints()
+{
+	return healthPoints;
+}
+
+void BlueEnemy::subHealthPoints(int newHP)
+{
+	this->healthPoints -= newHP;
+}
+
 void BlueEnemy::draw(float scrollX, float scrollY) {
 	animation->draw(x - scrollX, y - scrollY);
 }

@@ -75,9 +75,6 @@
     <ClCompile Include="Background.cpp">
       <Filter>Archivos de origen\actores</Filter>
     </ClCompile>
-    <ClCompile Include="Projectile.cpp">
-      <Filter>Archivos de origen\actores</Filter>
-    </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -138,6 +135,12 @@
     <ClCompile Include="BasicProjectile.cpp">
       <Filter>Archivos de origen\actores\towers\projectiles</Filter>
     </ClCompile>
+    <ClCompile Include="CannonProjectile.cpp">
+      <Filter>Archivos de origen\actores\towers\projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="FreezeProjectile.cpp">
+      <Filter>Archivos de origen\actores\towers\projectiles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -156,9 +159,6 @@
       <Filter>Archivos de encabezado\actores</Filter>
     </ClInclude>
     <ClInclude Include="Background.h">
-      <Filter>Archivos de encabezado\actores</Filter>
-    </ClInclude>
-    <ClInclude Include="Projectile.h">
       <Filter>Archivos de encabezado\actores</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
@@ -216,6 +216,12 @@
       <Filter>Archivos de encabezado\actores\towers\projectiles</Filter>
     </ClInclude>
     <ClInclude Include="TowerProjectile.h">
+      <Filter>Archivos de encabezado\actores\towers\projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="CannonProjectile.h">
+      <Filter>Archivos de encabezado\actores\towers\projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="FreezeProjectile.h">
       <Filter>Archivos de encabezado\actores\towers\projectiles</Filter>
     </ClInclude>
   </ItemGroup>

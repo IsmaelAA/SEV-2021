@@ -21,23 +21,6 @@ StandardEnemy::StandardEnemy(float x, float y, Game* game)
 StandardEnemy::StandardEnemy(float x, float y, list<PathTile*> pathTiles, Game* game) : Enemy("res/enemigo.png", x, y, 36, 40, game)
 {
 	this->pathTiles = pathTiles;
-	
-	this->pathTiles.sort([](const PathTile* a, const PathTile* b) {
-		if (a->x < b->x) {
-			return 1;
-		}
-		return 0;
-		});
-	
-	this->pathTiles.sort([](const PathTile* a, const PathTile* b) {
-
-		
-		if (a->x == b->x) {
-			return a->y <= b->y;
-		}
-		
-		return false;
-		});
 
 	vx = this->speed;
 
@@ -86,6 +69,16 @@ int StandardEnemy::getPoints()
 	return this->pointsDrop;
 }
 
+int StandardEnemy::getHealthPoints()
+{
+	return healthPoints;
+}
+
+void StandardEnemy::subHealthPoints(int newHP)
+{
+	this->healthPoints -= newHP;
+}
+
 void StandardEnemy::draw(float scrollX, float scrollY ) {
 	animation->draw(x - scrollX, y - scrollY);
 }
@@ -95,5 +88,6 @@ void StandardEnemy::impacted() {
 		state = game->stateDying;
 	
 	}
+	
 }
 

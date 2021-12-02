@@ -39,6 +39,7 @@ class GameLayer : public Layer
 public:
 	GameLayer(Game* game);
 	void init() override;
+	list<PathTile*> ordenaPathTiles();
 	void loadHUD();
 	void processControls() override;
 	void keysToControls(SDL_Event event);

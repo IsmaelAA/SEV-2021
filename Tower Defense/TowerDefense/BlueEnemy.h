@@ -7,6 +7,8 @@ public:
 	BlueEnemy(float x, float y, Game* game);
 	void draw(float scrollX = 0, float scrollY = 0) override; // Va a sobrescribir
 	void update();
+	int getHealthPoints();
+	void subHealthPoints(int newHP);
 
 	Animation* aMoving;
 	Animation* animation; // Referencia a la animación mostrada
@@ -18,4 +20,5 @@ public:
 	int ciclo = 80;
 
 	int pointsDrop = 15;
+	int healthPoints = 3;
 };
