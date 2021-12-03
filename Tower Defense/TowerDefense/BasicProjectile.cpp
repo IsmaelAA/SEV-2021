@@ -10,6 +10,8 @@ BasicProjectile::BasicProjectile(Enemy* enemy,float x, float y, int projectileSp
 }
 bool BasicProjectile::update()
 {
+	timeToExpire--;
+
 	if (targetEnemy->isInRender()) {
 		if (targetEnemy->x < this->x)
 			vx = -projectileSpeed;
@@ -28,9 +30,10 @@ bool BasicProjectile::update()
 		return false;
 }
 
-void BasicProjectile::hit(Enemy* enemy)
+bool BasicProjectile::hit(Enemy* enemy)
 {
 	enemy->subHealthPoints(this->projectileDamage);
+	return true;
 }
 
 int BasicProjectile::getTimeToExpire()

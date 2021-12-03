@@ -15,7 +15,6 @@ Game::Game() {
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
 
 	menuLayer = new MenuLayer(this);
-	gameLayer = new GameLayer(this);
 
 	layer = menuLayer; // Pantalla INICIAL MENULAYER
 

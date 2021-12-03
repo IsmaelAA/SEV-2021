@@ -1,8 +1,10 @@
 #pragma once
 
 #include "Layer.h"
+#include "GameLayer.h"
 #include "Actor.h"
 #include "Background.h"
+#include "Text.h"
 
 class MenuLayer : public Layer
 {
@@ -16,5 +18,8 @@ public:
 	bool controlContinue;
 
 	Background* background;
-	Actor* button;
+	Actor* buttonMap1;
+	Actor* buttonMap2;
+	Text* textMap1;
+	Text* textMap2;
 };

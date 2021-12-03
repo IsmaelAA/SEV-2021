@@ -166,6 +166,7 @@
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="BasicProjectile.cpp" />
     <ClCompile Include="BasicTower.cpp" />
+    <ClCompile Include="BlastProjectile.cpp" />
     <ClCompile Include="BlastTower.cpp" />
     <ClCompile Include="BlueEnemy.cpp" />
     <ClCompile Include="BuildableTile.cpp" />
@@ -196,6 +197,7 @@
     <ClInclude Include="Background.h" />
     <ClInclude Include="BasicProjectile.h" />
     <ClInclude Include="BasicTower.h" />
+    <ClInclude Include="BlastProjectile.h" />
     <ClInclude Include="BlastTower.h" />
     <ClInclude Include="BlueEnemy.h" />
     <ClInclude Include="BuildableTile.h" />

@@ -1,23 +1,4 @@
-#include "StandardEnemy.h"
-
-StandardEnemy::StandardEnemy(float x, float y, Game* game)
-	: Enemy("res/enemigo.png", x, y, 36, 40, game) {
-
-	
-	vx = this->speed;
-
-	state = game->stateMoving;
-
-	aDying = new Animation("res/enemigo_morir.png", width, height,
-		280, 40, 6, 8, false, game);
-
-	aMoving = new Animation("res/enemigo_movimiento.png", width, height,
-		108, 40, 6, 3, true, game);
-
-	animation = aMoving;
-
-}
-
+ï»¿#include "StandardEnemy.h"
 StandardEnemy::StandardEnemy(float x, float y, list<PathTile*> pathTiles, Game* game) : Enemy("res/enemigo.png", x, y, 36, 40, game)
 {
 	this->pathTiles = pathTiles;
@@ -27,39 +8,63 @@ StandardEnemy::StandardEnemy(float x, float y, list<PathTile*> pathTiles, Game* 
 	state = game->stateMoving;
 
 	aDying = new Animation("res/enemigo_morir.png", width, height,
-		280, 40, 6, 8, false, game);
+		160, 40, 6, 4, false, game);
 
 	aMoving = new Animation("res/enemigo_movimiento.png", width, height,
-		108, 40, 6, 3, true, game);
+		160, 40, 6, 4, true, game);
 
 	animation = aMoving;
 }
 
 
 void StandardEnemy::update() {
-	// Actualizar la animación
+
+	// Actualizar la animacion
 	bool endAnimation = animation->update();
-	
-	if (!pathTiles.empty()) {
-		PathTile* firstTile = pathTiles.front();
 
-		if (firstTile->x < this->x)
-			vx = -speed;
-		if (firstTile->x > this->x)
-			vx = speed;
-		if (firstTile->x == this->x)
-			vx = 0;
-
-		if (firstTile->y < this->y)
-			vy = -speed;
-		if (firstTile->y > this->y)
-			vy = speed;
-		if (firstTile->y == this->y)
-			vy = 0;
-
-		if (firstTile->containsPoint(this->x, this->y)) {
-			pathTiles.remove(firstTile);
+	// Acabo la animacion, no sabemos cual
+	if (endAnimation) {
+		// Estaba muriendo
+		if (state == game->stateDying) {
+			state = game->stateDead;
 		}
+	}
+
+	if (state == game->stateMoving) {
+		animation = aMoving;
+	}
+	if (state == game->stateDying) {
+		animation = aDying;
+	}
+
+
+	if (state != game->stateDying) {
+		if (!pathTiles.empty()) {
+			PathTile* firstTile = pathTiles.front();
+
+			if (firstTile->x < this->x)
+				vx = -speed;
+			else if (firstTile->x > this->x)
+				vx = speed;
+
+			if (firstTile->y < this->y)
+				vy = -speed;
+			else if (firstTile->y > this->y)
+				vy = speed;
+
+			if (firstTile->x == this->x)
+				vx = 0;
+			else if (firstTile->y == this->y)
+				vy = 0;
+
+			if (firstTile->containsPoint(this->x, this->y)) {
+				pathTiles.remove(firstTile);
+			}
+		}
+	}
+	else {
+		vx = 0;
+		vy = 0;
 	}
 		
 }
@@ -86,7 +91,6 @@ void StandardEnemy::draw(float scrollX, float scrollY ) {
 void StandardEnemy::impacted() {
 	if (state != game->stateDying) {
 		state = game->stateDying;
-	
 	}
 	
 }

@@ -4,7 +4,6 @@
 class StandardEnemy : public Enemy
 {
 public:
-	StandardEnemy(float x, float y, Game* game);
 	StandardEnemy(float x, float y,list<PathTile*> pathTiles, Game* game);
 	void draw(float scrollX = 0, float scrollY = 0) override; // Va a sobrescribir
 	void update();
@@ -20,7 +19,7 @@ public:
 	list<PathTile*> pathTiles;
 
 	int healthPoints = 5;
-	float speed = 4;
+	float speed = 2;
 	int pointsDrop = 10;
 };
 

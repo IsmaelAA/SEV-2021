@@ -12,11 +12,16 @@ bool FreezeProjectile::update()
 	return true;
 }
 
-void FreezeProjectile::hit(Enemy* enemy)
+bool FreezeProjectile::hit(Enemy* enemy)
 {
-	enemy->vx /=slowRatio;
-	enemy->vy /=slowRatio;
+	if (enemy->vx / slowRatio >= 1)
+		enemy->vx /= slowRatio;
+	if (enemy->vy / slowRatio >= 1)
+		enemy->vy /= slowRatio;
+	return false;
 }
+
+	
 
 int FreezeProjectile::getTimeToExpire()
 {

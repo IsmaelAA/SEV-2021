@@ -10,6 +10,7 @@ CannonProjectile::CannonProjectile(Enemy* enemy,float x, float y, int projectile
 
 bool CannonProjectile::update()
 {
+	timeToExpire--;
 	if (targetEnemy->isInRender()) {
 		if (targetEnemy->x < this->x)
 			vx = -projectileSpeed;
@@ -29,9 +30,10 @@ bool CannonProjectile::update()
 		return false;
 }
 
-void CannonProjectile::hit(Enemy* enemy)
+bool CannonProjectile::hit(Enemy* enemy)
 {
 	enemy->subHealthPoints(this->projectileDamage);
+	return true;
 }
 
 int CannonProjectile::getTimeToExpire()

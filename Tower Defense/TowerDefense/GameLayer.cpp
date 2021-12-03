@@ -30,6 +30,8 @@ void GameLayer::init() {
 
 	lives = 20;
 	points = 200;
+	rounds = 0;
+	newEnemyTime = 150;
 
 	//Cargar HUD
 	loadHUD();
@@ -114,6 +116,12 @@ void GameLayer::loadHUD() {
 
 	textLives = new Text("vidas", WIDTH * 0.77, HEIGHT * 0.05, game);
 	textLives->content = to_string(lives);
+
+	//Interfaz Rondas
+	textRounds = new Text("Rondas: ", WIDTH * 0.80, HEIGHT * 0.15, game);
+
+	textNumberOfRounds = new Text("numeroRondas", WIDTH * 0.9, HEIGHT * 0.15, game);
+	textNumberOfRounds->content = to_string(rounds);
 	
 }
 
@@ -130,10 +138,23 @@ void GameLayer::update() {
 
 	//Generacion de enemigos
 	if (timeToNewEnemy <= 0) {
+		rounds++;
+		textNumberOfRounds->content = to_string(rounds);
+		// Cada vez que pasan las rondas necesarias se amplifica su poder ( salen los enemigos un 5% antes)
+		// Esto hace que el juego sea imposible de acabar realmente, pasadas unas 50 rondas mas o menos spamea un enemigo por frame.
+		if (rounds % roundPowerUpAt) {
+			newEnemyTime *= 0.95;
+		}
+
 		timeToNewEnemy = newEnemyTime;
+		
 		StandardEnemy* se = new  StandardEnemy(initialTile->x, initialTile->y, pathTiles, game);
 		enemies.push_back(se);
 		space->addDynamicActor(se);
+
+		BlueEnemy* be = new  BlueEnemy(initialTile->x, initialTile->y, pathTiles, game);
+		enemies.push_back(be);
+		space->addDynamicActor(be);
 	}
 	else {
 		timeToNewEnemy--;
@@ -175,9 +196,7 @@ void GameLayer::update() {
 		for (auto const& projectile : towerProjectiles) {
 			if (enemy->isOverlap(projectile)) {
 				
-				projectile->hit(enemy);
-
-				if (projectile->getTimeToExpire() <= 0) {
+				if (projectile->hit(enemy)) {
 					bool pInList = std::find(deleteProjectiles.begin(),
 						deleteProjectiles.end(),
 						projectile) != deleteProjectiles.end();
@@ -190,16 +209,7 @@ void GameLayer::update() {
 			
 				if (enemy->getHealthPoints() <= 0) {
 					enemy->impacted();
-					bool eInList = std::find(deleteEnemies.begin(),
-						deleteEnemies.end(),
-						enemy) != deleteEnemies.end();
 
-					if (!eInList) {
-						deleteEnemies.push_back(enemy);
-					}
-					//Actualizar puntos
-					points += enemy->getPoints();
-					textPoints->content = to_string(points);
 				}
 
 			}
@@ -229,7 +239,7 @@ void GameLayer::update() {
 	}
 	// Si el projectil se sale de pantalla borrar.
 	for (auto const& projectile : towerProjectiles) {
-		if (projectile->isInRender() == false ) {
+		if (projectile->isInRender() == false || projectile->getTimeToExpire()<=0 ) {
 
 			bool pInList = std::find(deleteProjectiles.begin(),
 				deleteProjectiles.end(),
@@ -238,6 +248,22 @@ void GameLayer::update() {
 			if (!pInList) {
 				deleteProjectiles.push_back(projectile);
 			}
+		}
+	}
+	// Si el enemigo esta en estado muerto, borrar y sumar puntos.
+	for (auto const& enemy : enemies) {
+		if (enemy->state == game->stateDead) {
+			bool eInList = std::find(deleteEnemies.begin(),
+				deleteEnemies.end(),
+				enemy) != deleteEnemies.end();
+
+			if (!eInList) {
+				deleteEnemies.push_back(enemy);
+			}
+
+			//Actualizar puntos
+			points += enemy->getPoints();
+			textPoints->content = to_string(points);
 		}
 	}
 
@@ -274,11 +300,6 @@ void GameLayer::draw() {
 		buildableTile->draw();
 	}
 
-	//Dibujar torres
-	for (auto const& tower : towers) {
-		tower->draw();
-	}
-
 	//Dibujar enemigos
 	for (auto const& enemy : enemies) {
 		enemy->draw();
@@ -289,6 +310,11 @@ void GameLayer::draw() {
 		tProjectile->draw();
 	}
 
+	//Dibujar torres
+	for (auto const& tower : towers) {
+		tower->draw();
+	}
+
 	// HUD
 	//Dibujar marcadores de puntos y vidas
 	textPoints->draw();
@@ -296,6 +322,9 @@ void GameLayer::draw() {
 
 	textLives->draw();
 	backgroundLives->draw();
+
+	textRounds->draw();
+	textNumberOfRounds->draw();
 	//Dibujar botones torres
 	if (game->input == game->inputMouse) {
 		buttonBasicTower->draw();

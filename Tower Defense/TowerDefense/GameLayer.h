@@ -80,6 +80,10 @@ public:
 
 	Audio* audioBackground;
 
+	Text* textRounds;
+	Text* textNumberOfRounds;
+	int rounds = 0;
+	int roundPowerUpAt = 5;
 	int timeToNewEnemy = 0;
 	int newEnemyTime = 150;
 

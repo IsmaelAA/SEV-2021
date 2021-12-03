@@ -141,6 +141,9 @@
     <ClCompile Include="FreezeProjectile.cpp">
       <Filter>Archivos de origen\actores\towers\projectiles</Filter>
     </ClCompile>
+    <ClCompile Include="BlastProjectile.cpp">
+      <Filter>Archivos de origen\actores\towers\projectiles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -222,6 +225,9 @@
       <Filter>Archivos de encabezado\actores\towers\projectiles</Filter>
     </ClInclude>
     <ClInclude Include="FreezeProjectile.h">
+      <Filter>Archivos de encabezado\actores\towers\projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="BlastProjectile.h">
       <Filter>Archivos de encabezado\actores\towers\projectiles</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,55 +1,28 @@
 #include "BlueEnemy.h"
 
-BlueEnemy::BlueEnemy(float x, float y, Game* game)
-	: Enemy("res/enemigo_azul.png", x, y, 36, 40, game) {
+BlueEnemy::BlueEnemy(float x, float y, list<PathTile*> pathTiles, Game* game) : Enemy("res/basic_tower.png", x, y, 40, 40, game)
+{
+	this->pathTiles = pathTiles;
+
+	vx = this->speed;
 
 	state = game->stateMoving;
 
 	aDying = new Animation("res/enemigo_morir_azul.png", width, height,
-		280, 40, 6, 8, false, game);
+		160, 40, 6, 4, false, game);
 
 	aMoving = new Animation("res/enemigo_movimiento_azul.png", width, height,
-		108, 40, 6, 3, true, game);
+		160, 40, 6, 4, true, game);
 
 	animation = aMoving;
-
-	vx = 0;
-	vy = 0;
 }
 
+
 void BlueEnemy::update() {
-	tiempoCiclo--;
-	// Divido en 4 partes un ciclo
-
-	if (tiempoCiclo < ciclo * 0.25) {
-		// Diagonal superior derecha
-		vy = -2;
-		vx = -1;
-	}
-	else if (tiempoCiclo < ciclo * 0.5) {
-		// Diagonal superior izquierda
-		vy = -2;
-		vx = 1;
-	}
-	else if (tiempoCiclo < ciclo * 0.75) {
-		// Diagonal inferior izquierda
-		vy = 0;
-		vx = 1;
-	}
-	else if (tiempoCiclo < ciclo) {
-		// Diagonal inferior derecha
-		vy = 0;
-		vx = -1;
-	}
-
-	// Si tiempo ciclo menor que 0 se resetea
-	if (tiempoCiclo < 0)
-		tiempoCiclo = ciclo;
-
-	// Actualizar la animación
+	// Actualizar la animacion
 	bool endAnimation = animation->update();
 
-	// Acabo la animación, no sabemos cual
+	// Acabo la animacion, no sabemos cual
 	if (endAnimation) {
 		// Estaba muriendo
 		if (state == game->stateDying) {
@@ -64,6 +37,40 @@ void BlueEnemy::update() {
 		animation = aDying;
 	}
 
+	if (state != game->stateDying) {
+		if (!pathTiles.empty()) {
+			PathTile* firstTile = pathTiles.front();
+
+			if (firstTile->x < this->x)
+				vx = -speed;
+			else if (firstTile->x > this->x)
+				vx = speed;
+
+			if (firstTile->y < this->y)
+				vy = -speed;
+			else if (firstTile->y > this->y)
+				vy = speed;
+
+			if (firstTile->x == this->x)
+				vx = 0;
+			else if (firstTile->y == this->y)
+				vy = 0;
+
+			if (firstTile->containsPoint(this->x, this->y)) {
+				pathTiles.remove(firstTile);
+			}
+		}
+	}
+	else {
+		vx = 0;
+		vy = 0;
+	}
+
+}
+
+int BlueEnemy::getPoints()
+{
+	return this->pointsDrop;
 }
 
 int BlueEnemy::getHealthPoints()
@@ -84,4 +91,5 @@ void BlueEnemy::impacted() {
 	if (state != game->stateDying) {
 		state = game->stateDying;
 	}
+
 }

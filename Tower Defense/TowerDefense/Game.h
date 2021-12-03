@@ -45,7 +45,6 @@ public:
 	int const orientationLeft = 2;
 
 	int currentLevel = 0;
-	int finalLevel = 2;
 
 	int input;
 	int const inputKeyboard = 1;
