@@ -29,7 +29,7 @@ void GameLayer::init() {
 	selectedTower = NULL;
 
 	lives = 20;
-	points = 200;
+	points = 400;
 	rounds = 0;
 	newEnemyTime = 150;
 
@@ -84,7 +84,19 @@ list<PathTile*> GameLayer::ordenaPathTiles() {
 }
 
 void GameLayer::loadHUD() {
+
+	//buttonPause
+	buttonPause = new Actor("res/button_pause.png", WIDTH * 0.1, HEIGHT * 0.90, 50, 50, game);
+	
+	//buttonPause
+	buttonDoubleSpeed = new Actor("res/button_double_speed.png", WIDTH * 0.2, HEIGHT * 0.90, 50, 50, game);
+
 	//Interfaz torres
+
+	//buttonUpgrade
+	buttonUpgradeTower = new Actor("res/button_upgrade_tower.png", WIDTH * 0.5, HEIGHT * 0.90, 50, 50, game);
+	textPrecioUpgrade = new Text("precioUpgrade", WIDTH * 0.5, HEIGHT * 0.97, game);
+	textPrecioUpgrade->content = to_string(precioUpgrade);
 
 	//buttonBasicTower
 	buttonBasicTower = new Actor("res/button_basic_tower.png", WIDTH * 0.6, HEIGHT * 0.90, 50, 50, game);
@@ -127,7 +139,6 @@ void GameLayer::loadHUD() {
 
 void GameLayer::update() {
 	
-
 	if (pause) {
 		return;
 	}
@@ -184,32 +195,41 @@ void GameLayer::update() {
 
 	// Los proyectiles siempre van hacia el enemigo al que se le asigno en su creacion.
 	for (auto const& tProjectile : towerProjectiles) {
-		if (!tProjectile->update()) {
-			//si el update devuelve false significa que ya no hay enemigo al que targetear.
+		tProjectile->update();
+		
+		// Si el el estado del proyectil es dead eliminar.
+		if (tProjectile->state == game->stateDead) {
+			bool pInList = std::find(deleteProjectiles.begin(),
+				deleteProjectiles.end(),
+				tProjectile) != deleteProjectiles.end();
+
+			if (!pInList)
 			deleteProjectiles.push_back(tProjectile);
-		}	
+		}
 	}
 
 	// COLISIONES 
 	// Colisiones , Enemy - Projectile
 	for (auto const& enemy : enemies) {
-		for (auto const& projectile : towerProjectiles) {
-			if (enemy->isOverlap(projectile)) {
+		for (auto const& tProjectile : towerProjectiles) {
+			if (enemy->isOverlap(tProjectile)) {
 				
-				if (projectile->hit(enemy)) {
+				tProjectile->hit(enemy);
+				
+				// Si el el estado del proyectil es dead eliminar.
+				if (tProjectile->state == game->stateDead) {
+					
 					bool pInList = std::find(deleteProjectiles.begin(),
 						deleteProjectiles.end(),
-						projectile) != deleteProjectiles.end();
-
-					if (!pInList) {
-						deleteProjectiles.push_back(projectile);
-					}
+						tProjectile) != deleteProjectiles.end();
+					
+					if(!pInList)
+						deleteProjectiles.push_back(tProjectile);
 				}
 
-			
+				// Si el enemigo tiene 0 o menos de vida inicia la animacion de muerte.
 				if (enemy->getHealthPoints() <= 0) {
 					enemy->impacted();
-
 				}
 
 			}
@@ -232,24 +252,30 @@ void GameLayer::update() {
 			}
 
 			if (lives <= 0) {
+				message = new Actor("res/mensaje_gameover.png", WIDTH * 0.5, HEIGHT * 0.5,
+					WIDTH, HEIGHT, game);
+				pause = true;
+			
 				init();
 				return;
 			}
+		}
 	}
-	}
-	// Si el projectil se sale de pantalla borrar.
-	for (auto const& projectile : towerProjectiles) {
-		if (projectile->isInRender() == false || projectile->getTimeToExpire()<=0 ) {
+
+	// Si el projectil se sale de pantalla borrar o pasa el tiempo de expiracion.
+	for (auto const& tProjectile : towerProjectiles) {
+		if (tProjectile->isInRender() == false || tProjectile->getTimeToExpire()<=0 ) {
 
 			bool pInList = std::find(deleteProjectiles.begin(),
 				deleteProjectiles.end(),
-				projectile) != deleteProjectiles.end();
+				tProjectile) != deleteProjectiles.end();
 
 			if (!pInList) {
-				deleteProjectiles.push_back(projectile);
+				deleteProjectiles.push_back(tProjectile);
 			}
 		}
 	}
+
 	// Si el enemigo esta en estado muerto, borrar y sumar puntos.
 	for (auto const& enemy : enemies) {
 		if (enemy->state == game->stateDead) {
@@ -327,6 +353,10 @@ void GameLayer::draw() {
 	textNumberOfRounds->draw();
 	//Dibujar botones torres
 	if (game->input == game->inputMouse) {
+
+		buttonPause->draw();
+		buttonDoubleSpeed->draw();
+
 		buttonBasicTower->draw();
 		textPrecioBasic->draw();
 
@@ -343,6 +373,9 @@ void GameLayer::draw() {
 			Actor* rangeCircle = new Actor("res/range_circle.png",selectedTower->x,selectedTower->y,
 				(selectedTower->getRange()-1) *80 + 40, (selectedTower->getRange() - 1) * 80 + 40,200,200,game);
 			rangeCircle->draw();
+			
+			buttonUpgradeTower->draw();
+			textPrecioUpgrade->draw();
 		}
 	}
 
@@ -470,6 +503,8 @@ void GameLayer::mouseToControls(SDL_Event event) {
 	if (event.type == SDL_MOUSEBUTTONDOWN) {
 		controlContinue = true;
 	
+		
+
 		//Mirar si selecciono una casilla construible
 		for (auto const& buildableTile : buildableTiles) {
 			if (buildableTile->containsPoint(motionX, motionY) && !buildableTile->isBuilt) {
@@ -484,6 +519,27 @@ void GameLayer::mouseToControls(SDL_Event event) {
 			}
 		}
 
+		// Boton Pausar
+		if (buttonPause->containsPoint(motionX, motionY)) {
+			message = new Actor("res/mensaje_pausa.png", WIDTH * 0.5, HEIGHT * 0.5,
+				WIDTH, HEIGHT, game);
+			pause = !pause;
+			controlContinue = !controlContinue;
+		}
+
+		// Boton VelocidadDoble
+		if (buttonDoubleSpeed->containsPoint(motionX, motionY)) {
+			game->setDoubleSpeed();
+		}
+
+		// Boton mejorar
+		if (buttonUpgradeTower->isInRender() && buttonUpgradeTower->containsPoint(motionX, motionY)) {
+			if (selectedTower != NULL && points >= precioUpgrade) {
+				updatePoints(-precioUpgrade);
+				selectedTower->upgrade();
+			}
+		}
+
 		//Interfaz torres
 		if (buttonBasicTower->containsPoint(motionX, motionY)) {
 			if (selectedTile != NULL && points >= precioBasic) {
@@ -493,7 +549,6 @@ void GameLayer::mouseToControls(SDL_Event event) {
 				selectedTile->isBuilt = true;
 				releaseTile();
 			}
-
 		}
 
 		if (buttonCannonTower->containsPoint(motionX, motionY)) {
@@ -531,7 +586,7 @@ void GameLayer::mouseToControls(SDL_Event event) {
 			if (tower->containsPoint(motionX, motionY)) {
 				selectedTower = tower;
 				releaseTile();
-		}
+			}
 		}
 		
 	}

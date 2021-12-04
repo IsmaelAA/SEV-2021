@@ -8,7 +8,7 @@ public:
 	TowerProjectile* shoot(Enemy* enemy);
 	int getRange();
 	void update();
-
+	void upgrade();
 
 	//Stats
 	int attackSpeed = 180;

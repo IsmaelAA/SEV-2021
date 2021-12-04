@@ -5,12 +5,12 @@ class FreezeProjectile :
 {
 public:
 	FreezeProjectile(float x, float y, int projectileArea, float slowRatio, Game* game);
-	bool update();
-	bool hit(Enemy* enemy);
+	void update();
+	void hit(Enemy* enemy);
 	int getTimeToExpire();
 
 	int projectileArea;
 	int slowRatio;
-	int timeToExpire = 100;
+	int timeToExpire = 100; // Tiene que ser el mismo que el attackSpeed de la freeze tower.
 };
 

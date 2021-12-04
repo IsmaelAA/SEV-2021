@@ -5,8 +5,8 @@ class BlastProjectile :
 {
 public:
 	BlastProjectile(float x, float y, int projectileArea,int projectileDamage, Game* game);
-	bool update();
-	bool hit(Enemy* enemy);
+	void update();
+	void hit(Enemy* enemy);
 	int getTimeToExpire();
 
 	bool isActive = false;

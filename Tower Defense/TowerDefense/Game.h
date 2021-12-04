@@ -24,6 +24,7 @@ public:
 	bool scaledToMax = false;
 	float scaleLower = 1;
 	void loop();
+	void setDoubleSpeed();
 	SDL_Window* window; // ventana
 	SDL_Renderer* renderer; // renderizador
 	bool loopActive; // Juego activo
@@ -51,6 +52,6 @@ public:
 	int const inputMouse = 2;
 	int const inputGamePad = 3;
 
-
+	bool doubleSpeed;
 
 };

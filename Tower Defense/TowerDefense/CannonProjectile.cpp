@@ -2,13 +2,14 @@
 CannonProjectile::CannonProjectile(Enemy* enemy,float x, float y, int projectileSpeed, int projectileDamage, Game* game)
 	: TowerProjectile("res/cannon_projectile.png", x, y, 15, 15, 20, 20, game) {
 		{
+			this->state = game->stateMoving;
 			this->targetEnemy = enemy;
 			this->projectileSpeed = projectileSpeed;
 			this->projectileDamage = projectileDamage;
 		}
 }
 
-bool CannonProjectile::update()
+void CannonProjectile::update()
 {
 	timeToExpire--;
 	if (targetEnemy->isInRender()) {
@@ -24,16 +25,16 @@ bool CannonProjectile::update()
 			vy = projectileSpeed;
 		if (targetEnemy->y == this->y)
 			vy = 0;
-		return true;
 	}
 	else
-		return false;
+		state = game->stateDead;
 }
 
-bool CannonProjectile::hit(Enemy* enemy)
+void CannonProjectile::hit(Enemy* enemy)
 {
 	enemy->subHealthPoints(this->projectileDamage);
-	return true;
+	
+	state = game->stateDead;
 }
 
 int CannonProjectile::getTimeToExpire()

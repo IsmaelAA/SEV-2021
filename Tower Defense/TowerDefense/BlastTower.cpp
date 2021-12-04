@@ -26,3 +26,10 @@ int BlastTower::getRange()
 {
 	return range;
 }
+
+void BlastTower::upgrade()
+{
+	this->range++;
+	this->attackSpeed -= 5;
+	this->damage++;
+}

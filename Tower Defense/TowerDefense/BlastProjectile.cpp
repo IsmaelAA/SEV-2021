@@ -2,11 +2,12 @@
 BlastProjectile::BlastProjectile(float x, float y, int projectileArea,int projectileDamage, Game* game)
 	: TowerProjectile("res/blast_projectile.png", x, y, projectileArea, projectileArea, 200, 200, game) {
 		{
+			this->state = game->stateMoving;
 			this->projectileDamage = projectileDamage;
 			this->projectileArea = projectileArea;
 		}
 }
-bool BlastProjectile::update()
+void BlastProjectile::update()
 {
 	// tendra 4 intervalos(60%15) de activacion, esto lo hago porque si no estaria en cada frame haciendo daño a los enemigos, lo que quitaria la gracia del juego.
 	if (timeToExpire % 15 == 0 ) {
@@ -17,16 +18,15 @@ bool BlastProjectile::update()
 
 	timeToExpire--;
 	
-	return true;
 }
 
-bool BlastProjectile::hit(Enemy* enemy)
+void BlastProjectile::hit(Enemy* enemy)
 {
 	if (isActive) {
 		enemy->subHealthPoints(this->projectileDamage);
 		
 	}
-	return false;
+	
 }
 
 int BlastProjectile::getTimeToExpire()

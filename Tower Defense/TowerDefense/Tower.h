@@ -9,7 +9,7 @@ public:
 	virtual void update() = 0;
 	virtual TowerProjectile* shoot(Enemy* enemy) = 0;
 	virtual int getRange() = 0;
-
+	virtual void upgrade() = 0;
 	bool hasInRange(Enemy* enemy);
 
 	//Stats

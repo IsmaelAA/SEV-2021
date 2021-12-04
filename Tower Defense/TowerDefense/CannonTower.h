@@ -10,13 +10,13 @@ public:
 	void update();
 	TowerProjectile* shoot(Enemy* enemy);
 	int getRange();
-
+	void upgrade();
 
 	//Stats
 	int shootTime = 0;
 	int attackSpeed = 50;
 	int projectileSpeed = 2;
-	int damage = 5;
-	int range = 3;
+	int damage = 4;
+	int range = 2;
 };
 

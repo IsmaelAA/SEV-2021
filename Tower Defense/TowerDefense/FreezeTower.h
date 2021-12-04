@@ -10,10 +10,12 @@ public:
 	void update();
 	TowerProjectile* shoot(Enemy* e);
 	int getRange();
+	void upgrade();
 
 	//Stats
-	bool isActive = false;
-	float slowRatio = 2;
+	int shootTime = 0;
+	int attackSpeed = 100;
+	float slowRatio = 2; // Divide la velocidad del enemigo en este numero, cuanto mayor sea este numero mayor slow.
 	int range = 3;
 };
 

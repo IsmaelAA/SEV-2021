@@ -26,3 +26,9 @@ int BasicTower::getRange()
 {
 	return range;
 }
+
+void BasicTower::upgrade()
+{
+	 this->attackSpeed -= 5;
+	 this->damage++ ;
+}

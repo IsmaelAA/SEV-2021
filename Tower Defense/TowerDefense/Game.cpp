@@ -23,6 +23,7 @@ Game::Game() {
 	font = TTF_OpenFont("res/sans.ttf", 24);
 
 	loopActive = true; // bucle activo
+	doubleSpeed = false; // Velocidad doble desactivada
 	loop();
 }
 
@@ -38,6 +39,9 @@ void Game::loop() {
 		layer->processControls();
 		// Actualizar elementos
 		layer->update();
+		// Si velocidad doble esta activado
+		if(doubleSpeed)
+			layer->update();
 		// Dibujar
 		layer->draw();
 
@@ -49,6 +53,11 @@ void Game::loop() {
 			SDL_Delay((1000 / 30) - differenceTick);
 		}
 	}
+}
+
+void Game::setDoubleSpeed()
+{
+	doubleSpeed = !doubleSpeed;
 }
 
 void Game::scale() {

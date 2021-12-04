@@ -92,6 +92,9 @@ public:
 	Actor* buttonCannonTower;
 	Actor* buttonFreezeTower;
 	Actor* buttonBlastTower;
+	Actor* buttonUpgradeTower;
+	Actor* buttonPause;
+	Actor* buttonDoubleSpeed;
 
 	//Precios torres
 	Text* textPrecioBasic;
@@ -103,6 +106,9 @@ public:
 	Text* textPrecioBlast;
 	int precioBlast = 100;
 
+	Text* textPrecioUpgrade;
+	int precioUpgrade = 150;
+
 	BuildableTile* selectedTile;
 	void releaseTile();
 
@@ -111,7 +117,7 @@ public:
 	void updatePoints(int pointsToAdd);
 
 	Actor* message;
-	bool pause;
+	bool pause = false;
 
 };
 

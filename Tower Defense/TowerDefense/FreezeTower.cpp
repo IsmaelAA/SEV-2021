@@ -4,12 +4,15 @@ FreezeTower::FreezeTower(float x, float y, Game* game)
 }
 void FreezeTower::update()
 {
+	if (shootTime > 0) {
+		shootTime--;
+	}
 }
 
 TowerProjectile* FreezeTower::shoot(Enemy* enemy)
 {
-	if (!isActive) {
-		isActive = true;
+	if (shootTime <=0) {
+		shootTime = attackSpeed;
 		return new FreezeProjectile( x, y, (range - 1) * 80 + 40, slowRatio, game);
 	}
 	else {
@@ -20,4 +23,10 @@ TowerProjectile* FreezeTower::shoot(Enemy* enemy)
 int FreezeTower::getRange()
 {
 	return range;
+}
+
+void FreezeTower::upgrade()
+{
+	this->range++;
+	this->slowRatio+=0.5;
 }

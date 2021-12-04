@@ -26,3 +26,10 @@ int CannonTower::getRange()
 {
 	return range;
 }
+
+void CannonTower::upgrade()
+{
+	this->attackSpeed -= 20;
+	this->damage++;
+	this->range++;
+}
